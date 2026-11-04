@@ -859,5 +859,32 @@ var DRIFT_SETTINGS = {
 </script>
 <!-- ===== end of drift collage ===== -->
 
+<script>
+/* spinning tab icon: redraws the @-style "A" at a fixed speed (one full turn every 6 seconds) */
+(function () {
+  var PERIOD = 6000;
+  var cv = document.createElement('canvas'); if (!cv.getContext) return;
+  if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  cv.width = cv.height = 64; var ctx = cv.getContext('2d');
+  var dark = window.matchMedia ? matchMedia('(prefers-color-scheme: dark)') : { matches: false };
+  function src(c) {
+    return 'data:image/svg+xml,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><g fill="none" stroke="' + c +
+      '" stroke-width="6.5"><path d="M22 45 L32 20.5 L42 45 C44.5 50.5 53 50.5 57 42 A27 27 0 1 0 43 56.6"/><path d="M25.5 37 H38.5"/></g></svg>');
+  }
+  var light = new Image(), night = new Image(); light.src = src('#0a0a0a'); night.src = src('#ffffff');
+  var link = null;
+  function tick() {
+    var img = dark.matches ? night : light; if (!img.complete || !img.naturalWidth) return;
+    if (!link) {
+      document.querySelectorAll('link[rel="icon"]').forEach(function (l) { l.remove(); });
+      link = document.createElement('link'); link.rel = 'icon'; link.type = 'image/png'; document.head.appendChild(link);
+    }
+    var a = ((Date.now() % PERIOD) / PERIOD) * Math.PI * 2;
+    ctx.clearRect(0, 0, 64, 64); ctx.save(); ctx.translate(32, 32); ctx.rotate(a); ctx.drawImage(img, -32, -32, 64, 64); ctx.restore();
+    link.href = cv.toDataURL('image/png');
+  }
+  setInterval(tick, 66);
+})();
+</script>
 </body>
 </html>
