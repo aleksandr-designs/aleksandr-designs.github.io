@@ -60,7 +60,11 @@ var DRIFT_SETTINGS = {
   workLabel: "Work",
   contactLabel: "Contact",
   email: "your@email.com",
-  contactLines: ["Email me", "Instagram = instagram.com/yourname", "LinkedIn = linkedin.com/in/yourname"],   // Contact button flips the headline into these. Text = link
+  contactLines: ["Email me = form", "Socials"],   // Contact button flips the headline into these. Text = link (form = mail form, Socials = the links below)
+  socials: [],
+  formTitle: "Say hello.",
+  formButton: "Send",
+  formThanks: "Got it. I'll write back soon.",
   contactNote: "Now showing: Contact",
   indexTitle: "Work",
   indexNote: "Promo visuals for sports brands: weekly matchday systems, campaigns and freelance work.",
@@ -100,7 +104,7 @@ var DRIFT_SETTINGS = {
 #drift .dr-stamp{position:absolute;z-index:2;left:47%;top:42%;width:clamp(96px,9vw,150px);aspect-ratio:1;pointer-events:none}
 #drift .dr-stamp svg{width:100%;height:100%;animation:drspin 26s linear infinite}
 @keyframes drspin{to{transform:rotate(360deg)}}
-#drift .dr-head{position:absolute;z-index:3;bottom:3vh;pointer-events:none;color:#FFFFFF;mix-blend-mode:difference;font-weight:600;text-transform:uppercase;letter-spacing:-.055em;line-height:.86;font-size:clamp(42px,7.6vw,132px)}
+#drift .dr-head{position:absolute;z-index:3;bottom:3vh;pointer-events:none;color:#FFFFFF;mix-blend-mode:difference;font-weight:600;text-transform:uppercase;letter-spacing:-.055em;line-height:.86;font-size:calc(clamp(42px,7.6vw,132px) * var(--hs,1))}
 #drift .dr-head span{display:block}
 #drift .dr-head a{display:block;color:inherit;text-decoration:none;white-space:pre}
 #drift .dr-head a:hover{font-style:italic}
@@ -108,12 +112,31 @@ var DRIFT_SETTINGS = {
 #drift .dr-head .c.f{animation:drflap .09s linear}
 @keyframes drflap{50%{transform:scaleY(.12)}}
 #drift .dr-head.dr-board{pointer-events:auto}
-#drift .dr-kick{position:absolute;z-index:4;bottom:calc(3vh + var(--hl,3) * .873 * clamp(42px,7.6vw,132px) + 10px);color:#fff;mix-blend-mode:difference;font-size:13px;font-weight:600;letter-spacing:-.01em;text-transform:uppercase;opacity:0;pointer-events:none;transition:opacity .3s}
+#drift .dr-kick{position:absolute;z-index:4;bottom:calc(3vh + var(--hl,3) * .873 * clamp(42px,7.6vw,132px) * var(--hs,1) + 10px);color:#fff;mix-blend-mode:difference;font-size:13px;font-weight:600;letter-spacing:-.01em;text-transform:uppercase;opacity:0;pointer-events:none;transition:opacity .3s}
 #drift.dr-boardon .dr-kick{opacity:1}
 #drift .dr-more{transition:opacity .3s;color:#fff;mix-blend-mode:difference}
 #drift.dr-boardon .dr-more{opacity:0;pointer-events:none}
+#drift .dr-head .dr-soc{white-space:nowrap}
+#drift .dr-head .dr-soc a,#drift .dr-head .dr-soc .dr-dot{display:inline}
+#drift.dr-formon .dr-words,#drift.dr-formon .dr-tag{opacity:0}
+#drift .dr-form{position:absolute;z-index:6;top:76px;left:calc(56vw + 32px);width:min(30vw,460px);opacity:0;transform:translateX(48px);pointer-events:none;transition:opacity .7s cubic-bezier(.7,0,.2,1),transform .9s cubic-bezier(.7,0,.2,1)}
+#drift.dr-formon .dr-form{opacity:1;transform:none;pointer-events:auto;transition-delay:.12s}
+#drift .dr-form h3{margin:0 0 6px;font-size:clamp(30px,3.2vw,52px);font-weight:600;letter-spacing:-.055em;line-height:.88;text-transform:uppercase}
+#drift .dr-form label{display:block;margin:16px 0 2px;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;opacity:.5}
+#drift .dr-form input,#drift .dr-form textarea{display:block;width:100%;box-sizing:border-box;border:0;border-bottom:1px solid currentColor;border-radius:0;background:transparent;color:inherit;font-family:inherit;font-size:17px;font-weight:500;line-height:1.3;padding:6px 0;outline:none;box-shadow:none;-webkit-appearance:none;appearance:none}
+#drift .dr-form textarea{min-height:120px;resize:vertical}
+#drift .dr-form input:focus,#drift .dr-form textarea:focus{border-bottom-width:2px;padding-bottom:5px}
+#drift .dr-form .dr-hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+#drift .dr-formrow{display:flex;align-items:center;gap:16px;margin-top:22px}
+#drift .dr-send{background:#0A0A0A;color:#fff;padding:12px 24px;border-radius:99px;font-size:13px;font-weight:600;letter-spacing:.02em;text-transform:uppercase}
+#drift .dr-send:hover{opacity:.8}
+#drift .dr-send[disabled]{opacity:.4;cursor:default}
+#drift .dr-formstatus{font-size:13px;font-weight:600;line-height:1.3}
+#drift .dr-formclose{position:absolute;top:0;right:0;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+#drift .dr-formclose:hover{opacity:.55}
+@media (max-width:760px){#drift .dr-form{left:16px;width:calc(100vw - 44px - 32px)}#drift.dr-formon .dr-about,#drift.dr-formon .dr-stamp{opacity:0}}
 #drift .dr-contact.on{text-decoration:underline;text-underline-offset:3px}
-#drift .dr-more{position:absolute;z-index:4;bottom:calc(3vh + var(--hl,3) * .873 * clamp(42px,7.6vw,132px) + 10px)}
+#drift .dr-more{position:absolute;z-index:4;bottom:calc(3vh + var(--hl,3) * .873 * clamp(42px,7.6vw,132px) * var(--hs,1) + 10px)}
 #drift .dr-nav{position:absolute;top:14px;z-index:6;display:grid;gap:2px;color:#fff;mix-blend-mode:difference}
 #drift .dr-panel{position:absolute;top:0;bottom:0;right:0;width:min(78vw,1240px);z-index:10;transform:translateX(calc(100% - clamp(52px,5.4vw,86px)));transition:transform .75s cubic-bezier(.7,0,.2,1);display:grid;grid-template-columns:34px 190px minmax(0,1fr);grid-template-rows:auto minmax(0,1fr);column-gap:18px;padding-right:16px}
 #drift.dr-open .dr-panel{transform:translateX(0);box-shadow:-1px 0 0 rgba(0,0,0,.06)}
@@ -186,7 +209,8 @@ var DRIFT_SETTINGS = {
     'headline': 'headline', 'about': 'about', 'about link': 'aboutLink', 'tagline 1': 'taglineA', 'tagline 2': 'taglineB',
     'background words': 'backgroundWords', 'stamp outer': 'stampOuter', 'stamp inner': 'stampInner', 'email': 'email',
     'work label': 'workLabel', 'contact label': 'contactLabel', 'index title': 'indexTitle', 'index note': 'indexNote',
-    'contact lines': 'contactLines', 'contact note': 'contactNote', 'collage images': 'collageImages'
+    'contact lines': 'contactLines', 'contact note': 'contactNote', 'collage images': 'collageImages',
+    'socials': 'socials', 'form title': 'formTitle', 'form button': 'formButton', 'form thanks': 'formThanks'
   };
   var labelRe = new RegExp('^\\s*(' + Object.keys(LABELS).join('|') + ')\\s*:\\s*(.*)$', 'i');
   function deepFindText(root) {
@@ -216,7 +240,7 @@ var DRIFT_SETTINGS = {
       if (k === 'headline') out.headline = buf[k].join(' / ').split('/').map(function (s) { return s.trim(); }).filter(Boolean);
       else if (k === 'about') out.about = buf[k].join('\n\n');
       else if (k === 'taglineA' || k === 'taglineB') out[k] = buf[k].join(' ').split('/').map(function (s) { return s.trim(); }).join('\n');
-      else if (k === 'contactLines') out.contactLines = buf[k].join(' / ').split(/\s+\/\s+/).map(function (s) { return s.trim(); }).filter(Boolean);
+      else if (k === 'contactLines' || k === 'socials') out[k] = buf[k].join(' / ').split(/\s+\/\s+/).map(function (s) { return s.trim(); }).filter(Boolean);
       else out[k] = buf[k].join(' ');
     });
     return out;
@@ -384,6 +408,15 @@ var DRIFT_SETTINGS = {
         '<div class="dr-gridwrap"><div class="dr-grid"></div></div>' +
         '<p class="dr-note">' + esc(S.indexNote) + '</p>' +
       '</aside>' +
+      '<form class="dr-form" novalidate autocomplete="on">' +
+        '<button class="dr-formclose" type="button">✕ Close</button>' +
+        '<h3>' + esc(S.formTitle) + '</h3>' +
+        '<label for="dr-f-name">Name</label><input id="dr-f-name" name="name" type="text" autocomplete="name" required>' +
+        '<label for="dr-f-email">Your email</label><input id="dr-f-email" name="email" type="email" autocomplete="email" required>' +
+        '<label for="dr-f-msg">Message</label><textarea id="dr-f-msg" name="message" required></textarea>' +
+        '<input class="dr-hp" name="_honey" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">' +
+        '<div class="dr-formrow"><button class="dr-send" type="submit">' + esc(S.formButton) + '</button><p class="dr-formstatus" role="status" aria-live="polite"></p></div>' +
+      '</form>' +
       '<div class="dr-lb" role="dialog" aria-modal="true" aria-label="Image viewer" style="background:' + esc(bg) + '">' +
         '<div class="dr-lb-top"><span class="dr-small dr-lb-count"></span><button class="dr-small dr-lb-close" type="button">Close ✕</button></div>' +
         '<div class="dr-lb-stage"><button class="dr-lb-nav dr-lb-prev" type="button" aria-label="Previous image">← Prev</button><img alt="" draggable="false"><button class="dr-lb-nav dr-lb-next" type="button" aria-label="Next image">Next →</button></div>' +
@@ -460,7 +493,7 @@ var DRIFT_SETTINGS = {
     function isOpen() { return root.classList.contains('dr-open'); }
     function on(target, ev, fn, opt) { target.addEventListener(ev, fn, opt); cleanup.push(function () { target.removeEventListener(ev, fn, opt); }); }
     on(root, 'wheel', function (e) {
-      if (isOpen() || e.target.closest('.dr-panel')) return;
+      if (isOpen() || e.target.closest('.dr-panel') || e.target.closest('.dr-form')) return;
       e.preventDefault();
       var k = (e.deltaMode === 1 ? 32 : 1) * (S.scrollSpeed || 0.7), side = e.shiftKey && !e.deltaX;
       t.sx += (side ? e.deltaY : e.deltaX) * k; t.sy += (side ? 0 : e.deltaY) * k;
@@ -482,6 +515,7 @@ var DRIFT_SETTINGS = {
         if (e.key === 'Escape') lbClose(); else if (e.key === 'ArrowLeft') lbStep(-1); else if (e.key === 'ArrowRight') lbStep(1);
         return;
       }
+      if (e.key === 'Escape' && root.classList.contains('dr-formon')) { formToggle(false); return; }
       if (e.key === 'Escape' && root.classList.contains('dr-about-on')) { aboutToggle(false); return; }
       if (e.key === 'Escape' && boardOn) { board(false); return; }
       if (e.key === 'Escape') root.classList.remove('dr-open');
@@ -564,30 +598,79 @@ var DRIFT_SETTINGS = {
     root.querySelector('.dr-openwork').addEventListener('click', function () { root.classList.add('dr-open'); });
     root.querySelector('.dr-close').addEventListener('click', function () { root.classList.remove('dr-open'); });
     var moreBtn = root.querySelector('.dr-more');
+    /* the collage drifts left whenever the About text or the mail form is open */
+    function syncClear() { t.cl = (root.classList.contains('dr-about-on') || root.classList.contains('dr-formon')) ? 1 : 0; }
     function aboutToggle(v) {
       var onNow = root.classList.toggle('dr-about-on', v);
-      t.cl = onNow ? 1 : 0;
+      if (onNow && root.classList.contains('dr-formon')) formToggle(false);
+      syncClear();
       moreBtn.textContent = onNow ? '✕ Close' : '← ' + S.aboutLink;
     }
     moreBtn.addEventListener('click', function () { aboutToggle(!root.classList.contains('dr-about-on')); });
 
     /* contact: the headline flips like a stadium scoreboard into the contact lines */
     var headEl = root.querySelector('.dr-head'), contactBtn = root.querySelector('.dr-contact');
-    var boardOn = false, boardBusy = false, flipIds = [];
+    var boardOn = false, boardBusy = false, flipIds = [], socOpen = false;
     var HEADL = (S.headline || []).map(function (t) { return { t: String(t) }; });
-    var CONTACT = (S.contactLines || []).map(function (raw) {
-      var bits = String(raw).split('='), t = bits[0].trim(), h = bits.slice(1).join('=').trim();
-      if (!h && /mail/i.test(t) && S.email) h = S.email;
+    function toLink(h) {
       if (h && !/^(mailto:|https?:|tel:|#)/i.test(h)) h = (h.indexOf('@') > 0 && h.indexOf('/') < 0) ? 'mailto:' + h : 'https://' + h;
-      return { t: t, h: h };
+      return h;
+    }
+    var SOC = (S.socials || []).map(function (raw) {
+      var bits = String(raw).split('='); return { t: bits[0].trim(), h: toLink(bits.slice(1).join('=').trim()) };
+    }).filter(function (l) { return l.t && l.h; });
+    var CONTACT = (S.contactLines || []).map(function (raw) {
+      var bits = String(raw).split('='), t = bits[0].trim(), h = bits.slice(1).join('=').trim(), act = '';
+      if (/^form$/i.test(h) || (!h && /mail/i.test(t))) act = 'form';
+      else if (/^socials?$/i.test(h) || (!h && /social/i.test(t))) act = SOC.length ? 'socials' : '';
+      return { t: t, h: act ? '#' : toLink(h), act: act };
     }).filter(function (l) { return l.t; });
+    function socText() { return SOC.map(function (l) { return l.t; }).join(' · '); }
     function lineOpen(l, links) {
       if (!links || !l || !l.h) return '<span>';
+      if (l.act) return '<a href="#" data-act="' + l.act + '">';
       return '<a href="' + esc(l.h) + '"' + (/^https?:/i.test(l.h) ? ' target="_blank" rel="noopener"' : '') + '>';
     }
-    function setPlain(lines, links) {
-      headEl.innerHTML = lines.map(function (l) { var o = lineOpen(l, links); return o + esc(l.t) + (o === '<span>' ? '</span>' : '</a>'); }).join('');
+    /* keep every headline row on screen (and clear of the mail form) */
+    function fitHead() {
+      root.style.setProperty('--hs', 1);
+      var rows = headEl.children; if (!rows.length) return;
+      var left = headEl.getBoundingClientRect().left, peek = root.querySelector('.dr-peek').getBoundingClientRect().width || 60;
+      var full = W - peek - 24 - left, maxW = (root.classList.contains('dr-formon') && W >= 760) ? W * 0.56 - 24 - left : full, widest = 0;
+      for (var i = 0; i < rows.length; i++) {
+        rows[i].style.fontSize = '';
+        var rg = document.createRange(); rg.selectNodeContents(rows[i]);
+        var w = rg.getBoundingClientRect().width;
+        if (rows[i].classList.contains('dr-soc') && w > full) { var k = full / w; rows[i].style.fontSize = k.toFixed(3) + 'em'; w *= k; }
+        widest = Math.max(widest, w);
+      }
+      if (widest > maxW && maxW > 0) root.style.setProperty('--hs', (maxW / widest).toFixed(3));
     }
+    function socHTML() {
+      return SOC.map(function (l) { return '<a href="' + esc(l.h) + '" target="_blank" rel="noopener">' + esc(l.t) + '</a>'; }).join('<span class="dr-dot"> · </span>');
+    }
+    function setPlain(lines, links) {
+      headEl.innerHTML = lines.map(function (l) {
+        if (links && l.act === 'socials' && socOpen) return '<span class="dr-soc">' + socHTML() + '</span>';
+        var o = lineOpen(l, links); return o + esc(l.t) + (o === '<span>' ? '</span>' : '</a>');
+      }).join('');
+      fitHead();
+    }
+    var CH = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@.';
+    function spin(cs, target, rowNo, onDone) {
+      var left = cs.length; if (!left) { onDone(); return; }
+      Array.prototype.forEach.call(cs, function (c, k) {
+        var steps = 3 + k + rowNo * 2 + Math.floor(Math.random() * 4), n = 0, goal = target[k] || ' ';
+        var id = setInterval(function () {
+          n++;
+          c.textContent = n >= steps ? goal : CH.charAt(Math.floor(Math.random() * CH.length));
+          c.classList.remove('f'); void c.offsetWidth; c.classList.add('f');
+          if (n >= steps) { clearInterval(id); if (--left === 0) onDone(); }
+        }, 55);
+        flipIds.push(id);
+      });
+    }
+    function cellsHTML(chars, w) { var s = ''; for (var k = 0; k < w; k++) s += '<span class="c">' + esc(chars[k] || ' ') + '</span>'; return s; }
     function flip(from, to, links, done) {
       flipIds.forEach(clearInterval); flipIds = [];
       if (reduce) { setPlain(to, links); done(); return; }
@@ -595,27 +678,59 @@ var DRIFT_SETTINGS = {
       from.concat(to).forEach(function (l) { w = Math.max(w, Array.from(l.t).length); });
       var html = '';
       for (var i = 0; i < rows; i++) {
-        var a = Array.from(((from[i] || {}).t || '')), o = lineOpen(to[i], links), cells = '';
-        for (var k = 0; k < w; k++) cells += '<span class="c">' + esc(a[k] || ' ') + '</span>';
-        html += o + cells + (o === '<span>' ? '</span>' : '</a>');
+        var o = lineOpen(to[i], links);
+        html += o + cellsHTML(Array.from(((from[i] || {}).t || '')), w) + (o === '<span>' ? '</span>' : '</a>');
       }
-      headEl.innerHTML = html;
-      var CH = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@.', left = 0, rowsEl = headEl.children;
+      headEl.innerHTML = html; fitHead();
+      var pending = rows, rowsEl = headEl.children;
       for (var r = 0; r < rows; r++) {
-        var target = Array.from(((to[r] || {}).t || '')), cs = rowsEl[r].querySelectorAll('.c');
-        Array.prototype.forEach.call(cs, function (c, k) {
-          var steps = 3 + k + r * 2 + Math.floor(Math.random() * 4), n = 0, goal = target[k] || ' ';
-          left++;
-          var id = setInterval(function () {
-            n++;
-            c.textContent = n >= steps ? goal : CH.charAt(Math.floor(Math.random() * CH.length));
-            c.classList.remove('f'); void c.offsetWidth; c.classList.add('f');
-            if (n >= steps) { clearInterval(id); if (--left === 0) { setPlain(to, links); done(); } }
-          }, 55);
-          flipIds.push(id);
-        });
+        spin(rowsEl[r].querySelectorAll('.c'), Array.from(((to[r] || {}).t || '')), r, function () { if (--pending === 0) { setPlain(to, links); done(); } });
       }
     }
+    /* SOCIALS flips into one line of links */
+    function socialsOpen(a) {
+      if (socOpen || !SOC.length) return;
+      socOpen = true;
+      var target = Array.from(socText()), from = Array.from(a.textContent);
+      var row = document.createElement('span'); row.className = 'dr-soc';
+      if (reduce) { row.innerHTML = socHTML(); a.replaceWith(row); fitHead(); return; }
+      row.innerHTML = cellsHTML(from, Math.max(target.length, from.length));
+      a.replaceWith(row); fitHead();
+      spin(row.querySelectorAll('.c'), target, 0, function () { row.innerHTML = socHTML(); fitHead(); });
+    }
+
+    /* EMAIL ME opens a mail form on the right */
+    var form = root.querySelector('.dr-form'), formStatus = form.querySelector('.dr-formstatus'), sendBtn = form.querySelector('.dr-send');
+    function formToggle(v) {
+      var onNow = root.classList.toggle('dr-formon', v);
+      if (onNow && root.classList.contains('dr-about-on')) aboutToggle(false);
+      syncClear(); fitHead();
+      if (onNow) setTimeout(function () { try { form.querySelector('input[name="name"]').focus({ preventScroll: true }); } catch (e) {} }, 600);
+    }
+    form.querySelector('.dr-formclose').addEventListener('click', function () { formToggle(false); });
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var to = String(S.email || '').trim();
+      if (!/@/.test(to) || /your@email/i.test(to)) { formStatus.textContent = 'The inbox for this form isn\'t set up yet.'; return; }
+      if (form.querySelector('input[name="_honey"]').value) return;
+      var data = { name: form.elements.name.value, email: form.elements.email.value, message: form.elements.message.value,
+        _subject: 'New message from your portfolio', _template: 'box', _captcha: 'false', _replyto: form.elements.email.value };
+      sendBtn.disabled = true; formStatus.textContent = 'Sending…';
+      fetch('https://formsubmit.co/ajax/' + encodeURIComponent(to), {
+        method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(data)
+      }).then(function (r) { return r.json(); }).then(function (d) {
+        if (String(d.success) === 'true') { formStatus.textContent = S.formThanks || 'Sent. Thank you!'; form.reset(); }
+        else formStatus.textContent = d.message || 'Something went wrong. Please try again.';
+      }).catch(function () { formStatus.textContent = 'Could not send. Check your connection and try again.'; })
+        .then(function () { sendBtn.disabled = false; });
+    });
+    headEl.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a[data-act]'); if (!a) return;
+      e.preventDefault(); e.stopPropagation();
+      if (a.dataset.act === 'form') formToggle(!root.classList.contains('dr-formon'));
+      else if (a.dataset.act === 'socials') socialsOpen(a);
+    });
+
     function board(on) {
       if (on === boardOn || boardBusy || !CONTACT.length) return;
       boardOn = on; boardBusy = true;
@@ -624,10 +739,15 @@ var DRIFT_SETTINGS = {
       root.classList.toggle('dr-boardon', on); contactBtn.classList.toggle('on', on); contactBtn.setAttribute('aria-expanded', on ? 'true' : 'false');
       headEl.classList.toggle('dr-board', on);
       root.style.setProperty('--hl', (on ? CONTACT.length : HEADL.length) || 3);
-      if (on) flip(HEADL, CONTACT, true, fin); else flip(CONTACT, HEADL, false, fin);
+      if (on) { socOpen = false; flip(HEADL, CONTACT, true, fin); return; }
+      if (root.classList.contains('dr-formon')) formToggle(false);
+      var shown = CONTACT.map(function (l) { return (socOpen && l.act === 'socials') ? { t: socText() } : l; });
+      socOpen = false;
+      flip(shown, HEADL, false, fin);
     }
     contactBtn.addEventListener('click', function (e) { e.stopPropagation(); board(!boardOn); });
-    on(root, 'click', function (e) { if (boardOn && !(e.target.closest && e.target.closest('.dr-head a, .dr-contact'))) board(false); });
+    on(root, 'click', function (e) { if (boardOn && !(e.target.closest && e.target.closest('.dr-head a, .dr-head .dr-soc, .dr-contact, .dr-form'))) board(false); });
+    var fitT; on(window, 'resize', function () { clearTimeout(fitT); fitT = setTimeout(fitHead, 160); });
     cleanup.push(function () { flipIds.forEach(clearInterval); });
   }
   function unmount() {
