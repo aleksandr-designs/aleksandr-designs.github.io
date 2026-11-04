@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+<style>.s{fill:none;stroke:#0a0a0a;stroke-width:6.5;stroke-linejoin:miter;stroke-linecap:butt}@media (prefers-color-scheme:dark){.s{stroke:#fff}}</style>
+<path class="s" d="M22 45 L32 20.5 L42 45 C44.5 50.5 53 50.5 57 42 A27 27 0 1 0 43 56.6"/>
+<path class="s" d="M25.5 37 H38.5"/>
+</svg>
