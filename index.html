@@ -108,9 +108,12 @@ var DRIFT_SETTINGS = {
 #drift .dr-head span{display:block}
 #drift .dr-head a{display:block;color:inherit;text-decoration:none;white-space:pre}
 #drift .dr-head a:hover{font-style:italic}
-#drift .dr-head .c{display:inline-block;text-align:center;width:.62em;white-space:pre}
-#drift .dr-head .c.f{animation:drflap .09s linear}
-@keyframes drflap{50%{transform:scaleY(.12)}}
+@property --hs{syntax:'<number>';inherits:true;initial-value:1}
+#drift{transition:--hs .6s cubic-bezier(.4,0,.2,1)}
+#drift .dr-head .c{display:inline-block;text-align:center;white-space:pre;overflow:visible;vertical-align:top;transition:width .45s cubic-bezier(.4,0,.2,1)}
+#drift .dr-head .c.f{animation:drflap .12s cubic-bezier(.3,0,.3,1)}
+@keyframes drflap{from{transform:translateY(-.06em) scaleY(.82);opacity:.55}to{transform:none;opacity:1}}
+#drift .dr-meas{position:absolute;left:-9999px;top:0;visibility:hidden;white-space:pre;display:inline-block;font-size:100px;font-weight:600;text-transform:uppercase;letter-spacing:-.055em;line-height:1}
 #drift .dr-head.dr-board{pointer-events:auto}
 #drift .dr-kick{position:absolute;z-index:4;bottom:calc(3vh + var(--hl,3) * .873 * clamp(42px,7.6vw,132px) * var(--hs,1) + 10px);color:#fff;mix-blend-mode:difference;font-size:13px;font-weight:600;letter-spacing:-.01em;text-transform:uppercase;opacity:0;pointer-events:none;transition:opacity .3s}
 #drift.dr-boardon .dr-kick{opacity:1}
@@ -631,73 +634,102 @@ var DRIFT_SETTINGS = {
       if (l.act) return '<a href="#" data-act="' + l.act + '">';
       return '<a href="' + esc(l.h) + '"' + (/^https?:/i.test(l.h) ? ' target="_blank" rel="noopener"' : '') + '>';
     }
-    /* keep every headline row on screen (and clear of the mail form) */
-    function fitHead() {
-      root.style.setProperty('--hs', 1);
-      var rows = headEl.children; if (!rows.length) return;
+    /* ---- letter widths: every flipping cell is exactly as wide as the letter it ends on,
+           so letters never jump between the animation and the finished text ---- */
+    var meas = document.createElement('span');
+    meas.className = 'dr-meas'; meas.setAttribute('aria-hidden', 'true'); root.appendChild(meas);
+    var emCache = {};
+    function emOf(ch) {
+      if (!ch) return 0;
+      if (emCache.hasOwnProperty(ch)) return emCache[ch];
+      meas.textContent = ch === ' ' ? ' ' : ch;
+      return (emCache[ch] = meas.getBoundingClientRect().width / 100);
+    }
+    function emLen(str) { var s = 0; Array.from(str || '').forEach(function (c) { s += emOf(c); }); return s; }
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { emCache = {}; fitHead(); });
+
+    /* keep every headline row on screen (and clear of the mail form); the size change glides */
+    var curRows = HEADL.map(function (l) { return l.t; });
+    function fitHead(rows) {
+      if (rows) curRows = rows;
       var left = headEl.getBoundingClientRect().left, peek = root.querySelector('.dr-peek').getBoundingClientRect().width || 60;
-      var full = W - peek - 24 - left, maxW = (root.classList.contains('dr-formon') && W >= 760) ? W * 0.56 - 24 - left : full, widest = 0;
-      for (var i = 0; i < rows.length; i++) {
-        rows[i].style.fontSize = '';
-        var rg = document.createRange(); rg.selectNodeContents(rows[i]);
-        var w = rg.getBoundingClientRect().width;
-        if (rows[i].classList.contains('dr-soc') && w > full) { var k = full / w; rows[i].style.fontSize = k.toFixed(3) + 'em'; w *= k; }
-        widest = Math.max(widest, w);
-      }
-      if (widest > maxW && maxW > 0) root.style.setProperty('--hs', (maxW / widest).toFixed(3));
+      var full = W - peek - 24 - left, maxW = (root.classList.contains('dr-formon') && W >= 760) ? W * 0.56 - 24 - left : full;
+      var base = Math.min(132, Math.max(42, window.innerWidth * 0.076)), widest = 0;
+      curRows.forEach(function (t) { widest = Math.max(widest, emLen(t) * base); });
+      root.style.setProperty('--hs', (widest > maxW && maxW > 0) ? (maxW / widest).toFixed(3) : 1);
     }
     function socHTML() {
       return SOC.map(function (l) { return '<a href="' + esc(l.h) + '" target="_blank" rel="noopener">' + esc(l.t) + '</a>'; }).join('<span class="dr-dot"> · </span>');
     }
+    function rowTexts(lines, links) { return lines.map(function (l) { return (links && l.act === 'socials' && socOpen) ? socText() : l.t; }); }
     function setPlain(lines, links) {
       headEl.innerHTML = lines.map(function (l) {
         if (links && l.act === 'socials' && socOpen) return '<span class="dr-soc">' + socHTML() + '</span>';
         var o = lineOpen(l, links); return o + esc(l.t) + (o === '<span>' ? '</span>' : '</a>');
       }).join('');
-      fitHead();
+      fitHead(rowTexts(lines, links));
     }
-    var CH = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@.';
-    function spin(cs, target, rowNo, onDone) {
+    var CH = 'ABCDEFGHKLNOPRSTUVXYZ0123456789';
+    function cell(from, to) {
+      return '<span class="c" data-to="' + esc(to || '') + '" style="width:' + emOf(from).toFixed(4) + 'em">' + esc(from || ' ') + '</span>';
+    }
+    /* spin the cells of one row: widths glide to their final letter, letters cycle and land left to right */
+    function spin(cs, rowNo, onDone) {
       var left = cs.length; if (!left) { onDone(); return; }
+      requestAnimationFrame(function () { requestAnimationFrame(function () {
+        Array.prototype.forEach.call(cs, function (c) { c.style.width = emOf(c.getAttribute('data-to')).toFixed(4) + 'em'; });
+      }); });
       Array.prototype.forEach.call(cs, function (c, k) {
-        var steps = 3 + k + rowNo * 2 + Math.floor(Math.random() * 4), n = 0, goal = target[k] || ' ';
+        var goal = c.getAttribute('data-to'), steps = 4 + k + rowNo * 2 + Math.floor(Math.random() * 3), n = 0;
         var id = setInterval(function () {
           n++;
-          c.textContent = n >= steps ? goal : CH.charAt(Math.floor(Math.random() * CH.length));
+          var done = n >= steps;
+          c.textContent = done ? (goal || ' ') : (goal === ' ' || !goal ? ' ' : CH.charAt(Math.floor(Math.random() * CH.length)));
           c.classList.remove('f'); void c.offsetWidth; c.classList.add('f');
-          if (n >= steps) { clearInterval(id); if (--left === 0) onDone(); }
-        }, 55);
+          if (done) { clearInterval(id); if (--left === 0) onDone(); }
+        }, 60);
         flipIds.push(id);
       });
     }
-    function cellsHTML(chars, w) { var s = ''; for (var k = 0; k < w; k++) s += '<span class="c">' + esc(chars[k] || ' ') + '</span>'; return s; }
     function flip(from, to, links, done) {
       flipIds.forEach(clearInterval); flipIds = [];
       if (reduce) { setPlain(to, links); done(); return; }
-      var rows = Math.max(from.length, to.length), w = 0;
-      from.concat(to).forEach(function (l) { w = Math.max(w, Array.from(l.t).length); });
-      var html = '';
+      var rows = Math.max(from.length, to.length), html = '';
       for (var i = 0; i < rows; i++) {
-        var o = lineOpen(to[i], links);
-        html += o + cellsHTML(Array.from(((from[i] || {}).t || '')), w) + (o === '<span>' ? '</span>' : '</a>');
+        var a = Array.from(((from[i] || {}).t || '')), b = Array.from(((to[i] || {}).t || '')), o = lineOpen(to[i], links), cells = '';
+        for (var k = 0; k < Math.max(a.length, b.length); k++) cells += cell(a[k], b[k]);
+        html += o + cells + (o === '<span>' ? '</span>' : '</a>');
       }
-      headEl.innerHTML = html; fitHead();
+      headEl.innerHTML = html;
+      fitHead(rowTexts(to, links));
       var pending = rows, rowsEl = headEl.children;
-      for (var r = 0; r < rows; r++) {
-        spin(rowsEl[r].querySelectorAll('.c'), Array.from(((to[r] || {}).t || '')), r, function () { if (--pending === 0) { setPlain(to, links); done(); } });
-      }
+      for (var r = 0; r < rows; r++) spin(rowsEl[r].querySelectorAll('.c'), r, function () { if (--pending === 0) done(); });
     }
-    /* SOCIALS flips into one line of links */
+    /* SOCIALS flips into one line of links (each word stays a link while it flips) */
     function socialsOpen(a) {
       if (socOpen || !SOC.length) return;
       socOpen = true;
-      var target = Array.from(socText()), from = Array.from(a.textContent);
+      var idx = Array.prototype.indexOf.call(headEl.children, a);
       var row = document.createElement('span'); row.className = 'dr-soc';
-      if (reduce) { row.innerHTML = socHTML(); a.replaceWith(row); fitHead(); return; }
-      row.innerHTML = cellsHTML(from, Math.max(target.length, from.length));
-      a.replaceWith(row); fitHead();
-      spin(row.querySelectorAll('.c'), target, 0, function () { row.innerHTML = socHTML(); fitHead(); });
+      if (reduce) { row.innerHTML = socHTML(); a.replaceWith(row); fitHead(curRows.map(function (t, i) { return i === idx ? socText() : t; })); return; }
+      var from = Array.from(a.textContent), pos = 0, html = '';
+      SOC.forEach(function (l, i) {
+        if (i) { html += '<span class="dr-dot">'; Array.from(' · ').forEach(function (ch) { html += cell(from[pos], ch); pos++; }); html += '</span>'; }
+        html += '<a href="' + esc(l.h) + '" target="_blank" rel="noopener">';
+        Array.from(l.t).forEach(function (ch) { html += cell(from[pos], ch); pos++; });
+        html += '</a>';
+      });
+      row.innerHTML = html;
+      a.replaceWith(row);
+      fitHead(curRows.map(function (t, i) { return i === idx ? socText() : t; }));
+      spin(row.querySelectorAll('.c'), 0, function () {});
     }
+
+    /* the resting headline uses the same letter cells, so nothing shifts when a flip starts */
+    function cellRows(lines) { headEl.innerHTML = lines.map(function (l) { return '<span>' + Array.from(l.t).map(function (ch) { return cell(ch, ch); }).join('') + '</span>'; }).join(''); }
+    if (!reduce) cellRows(HEADL);
+    fitHead();
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { if (!reduce && !boardOn) cellRows(HEADL); });
 
     /* EMAIL ME opens a mail form on the right */
     var form = root.querySelector('.dr-form'), formStatus = form.querySelector('.dr-formstatus'), sendBtn = form.querySelector('.dr-send');
