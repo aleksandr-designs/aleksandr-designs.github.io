@@ -110,9 +110,9 @@ var DRIFT_SETTINGS = {
 #drift .dr-head a:hover{font-style:italic}
 @property --hs{syntax:'<number>';inherits:true;initial-value:1}
 #drift{transition:--hs .6s cubic-bezier(.4,0,.2,1)}
-#drift .dr-head .c{display:inline-block;text-align:center;white-space:pre;overflow:visible;vertical-align:top;transition:width .45s cubic-bezier(.4,0,.2,1)}
+#drift .dr-head .c{display:inline-block;text-align:center;white-space:pre;vertical-align:top;clip-path:inset(-.4em 0 -.4em 0)}
 #drift .dr-head .c.f{animation:drflap .12s cubic-bezier(.3,0,.3,1)}
-@keyframes drflap{from{transform:translateY(-.06em) scaleY(.82);opacity:.55}to{transform:none;opacity:1}}
+@keyframes drflap{from{opacity:.45}to{opacity:1}}
 #drift .dr-meas{position:absolute;left:-9999px;top:0;visibility:hidden;white-space:pre;display:inline-block;font-size:100px;font-weight:600;text-transform:uppercase;letter-spacing:-.055em;line-height:1}
 #drift .dr-head.dr-board{pointer-events:auto}
 #drift .dr-kick{position:absolute;z-index:4;bottom:calc(3vh + var(--hl,3) * .873 * clamp(42px,7.6vw,132px) * var(--hs,1) + 10px);color:#fff;mix-blend-mode:difference;font-size:13px;font-weight:600;letter-spacing:-.01em;text-transform:uppercase;opacity:0;pointer-events:none;transition:opacity .3s}
@@ -671,14 +671,11 @@ var DRIFT_SETTINGS = {
     }
     var CH = 'ABCDEFGHKLNOPRSTUVXYZ0123456789';
     function cell(from, to) {
-      return '<span class="c" data-to="' + esc(to || '') + '" style="width:' + emOf(from).toFixed(4) + 'em">' + esc(from || ' ') + '</span>';
+      return '<span class="c" data-to="' + esc(to || '') + '" style="width:' + emOf(to).toFixed(4) + 'em">' + esc(to ? (from || ' ') : ' ') + '</span>';
     }
-    /* spin the cells of one row: widths glide to their final letter, letters cycle and land left to right */
+    /* spin the cells of one row: every cell already has its final width, letters cycle in place and land left to right */
     function spin(cs, rowNo, onDone) {
       var left = cs.length; if (!left) { onDone(); return; }
-      requestAnimationFrame(function () { requestAnimationFrame(function () {
-        Array.prototype.forEach.call(cs, function (c) { c.style.width = emOf(c.getAttribute('data-to')).toFixed(4) + 'em'; });
-      }); });
       Array.prototype.forEach.call(cs, function (c, k) {
         var goal = c.getAttribute('data-to'), steps = 4 + k + rowNo * 2 + Math.floor(Math.random() * 3), n = 0;
         var id = setInterval(function () {
