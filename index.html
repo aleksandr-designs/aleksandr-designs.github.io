@@ -186,7 +186,7 @@ var DRIFT_SETTINGS = {
     'headline': 'headline', 'about': 'about', 'about link': 'aboutLink', 'tagline 1': 'taglineA', 'tagline 2': 'taglineB',
     'background words': 'backgroundWords', 'stamp outer': 'stampOuter', 'stamp inner': 'stampInner', 'email': 'email',
     'work label': 'workLabel', 'contact label': 'contactLabel', 'index title': 'indexTitle', 'index note': 'indexNote',
-    'contact lines': 'contactLines', 'contact note': 'contactNote'
+    'contact lines': 'contactLines', 'contact note': 'contactNote', 'collage images': 'collageImages'
   };
   var labelRe = new RegExp('^\\s*(' + Object.keys(LABELS).join('|') + ')\\s*:\\s*(.*)$', 'i');
   function deepFindText(root) {
@@ -399,13 +399,24 @@ var DRIFT_SETTINGS = {
     var items = [], W = 0, H = 0;
     function wrap(v, min, max) { var r = max - min; return ((((v - min) % r) + r) % r) + min; }
 
+    /* which projects float in the collage: the "Collage images" list if given, otherwise the first ones */
+    var pool = (function () {
+      var names = String(S.collageImages || '').split(',').map(function (s) { return s.trim().toLowerCase(); }).filter(Boolean), out = [];
+      names.forEach(function (n) {
+        for (var j = 0; j < projects.length; j++) {
+          var hit = projects[j].pics.some(function (pic) { var f = decodeURIComponent(String(pic.src).split('?')[0].split('/').pop()).toLowerCase(); return f === n; });
+          if (hit && out.indexOf(projects[j]) < 0) { out.push(projects[j]); break; }
+        }
+      });
+      return out.length ? out : projects;
+    })();
     function layout() {
       field.innerHTML = ''; items = [];
       W = root.clientWidth; H = root.clientHeight;
       var count = W < 760 ? Math.min(9, S.tilesOnScreen || 17) : (S.tilesOnScreen || 17);
       var base = Math.max(80, Math.min(W, 1800) * ((S.tileSize || 8.8) / 100)), rows = Math.ceil(count / 5);
       for (var i = 0; i < count; i++) {
-        var p = projects[i % projects.length], r = p.pics[0].ratio || 1.25;
+        var p = pool[i % pool.length], r = p.pics[0].ratio || 1.25;
         var s = base * (0.75 + ((i * 37) % 10) / 10 * 0.9), w = Math.round(s), h = Math.round(s * r);
         if (h > H * 0.42) { h = Math.round(H * 0.42); w = Math.round(h / r); }
         if (w > W * 0.4) { w = Math.round(W * 0.4); h = Math.round(w * r); }

@@ -26,6 +26,10 @@ Contact note: Now showing: Contact
 Index title: Work
 Index note: Promo visuals for sports brands: weekly matchday systems, campaigns and freelance work.
 
+# The images floating in the collage, in order (file names, separated by commas).
+# Leave it empty to use the first images in the Work list.
+Collage images: 01-birds-in-the-trap.jpg, 02-heirs-tracklist.jpg, 03-backtrack.jpg, 04-have-heart.jpg, 05-queensway.jpg, 06-rotting-out.jpg, 07-world-of-pleasure.jpg, 08-underdog.jpg, 09-perfect-snack.jpg, 10-grasp.jpg, 11-burn-out.jpg, 12-lulu.jpg, 13-sunshine.jpg, 14-forest.jpg, cc09-poster1.jpg, m02.jpg, m03.jpg
+
 
 # =====================================================================
 #  WORK
