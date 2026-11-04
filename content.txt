@@ -1,0 +1,110 @@
+# =====================================================================
+#  ALEKSANDR — WEBSITE CONTENT
+#  Edit the words after each label, then click "Commit changes".
+#  The live site updates about a minute later.
+#  Lines that start with # are notes for you. The site ignores them.
+# =====================================================================
+
+Headline: Aleksandr® / Graphic design
+About:
+I make "graphic design."
+Sometimes it's a campaign. Sometimes it's a brand built from zero: the logo, the mascot, the merch, the poster, the game that drops on launch day. Sometimes it's the system that lets ten people do all of that faster. I don't separate those. Same practice, different outputs.
+I work like a tourist in every discipline. Curious, a little naive, never too precious. Purists know the rules too well to break them. I'd rather walk in with fresh eyes, touch everything, and leave something that wasn't there before.
+My tools are whatever gets the idea out of my head fastest. AI, a pen, a plugin I wrote at 2 a.m. because I refused to do the same thing by hand one more time. The tool is never the point. The edit is.
+I design for the thumb mid-scroll and the person walking past a wall. If either one stops for half a second, the job's done. If they screenshot it, even better.
+Still a student. Always will be.
+Based in Yerevan. Open to relocation.
+About link: More about me
+Tagline 1:
+Tagline 2:
+Background words: Aleksandr®, Graphic, Design, Ideas, Brands, Campaigns, Systems
+Stamp outer: MADE TO STOP THE SCROLL · AND THE STREET ·
+Stamp inner: HALF A SECOND · HALF A SECOND ·
+Email: your@email.com
+Contact lines: Email me / Instagram = instagram.com/yourname / LinkedIn = linkedin.com/in/yourname
+Contact note: Now showing: Contact
+Index title: Work
+Index note: Promo visuals for sports brands: weekly matchday systems, campaigns and freelance work.
+
+
+# =====================================================================
+#  WORK
+#  One line per image:      image file | Title | Group | Client | Year | Format
+#  Text between images:     Note | Group | Heading | Text
+#
+#  - Image files live in the "images" folder. To add one, upload it there
+#    and add a line here with its exact file name.
+#  - The Group decides which list it appears under in the work panel.
+#  - Lines with the same Title become one project that cycles its images.
+#  - Leave a part empty but keep the bars, e.g.  | Personal project |  | Poster
+# =====================================================================
+
+01-birds-in-the-trap.jpg | Birds in the Trap | CREATIVE VISUALS | Personal project |  | Album cover
+02-heirs-tracklist.jpg | Heirs | CREATIVE VISUALS | Personal project |  | Back cover
+03-backtrack.jpg | Backtrack — Bad to My World | CREATIVE VISUALS | Personal project |  | Album cover
+04-have-heart.jpg | Have Heart — Songs to Scream at the Sun | CREATIVE VISUALS | Personal project |  | Album cover
+05-queensway.jpg | Queensway — Swift Minds of the Darkside | CREATIVE VISUALS | Personal project |  | Album cover
+06-rotting-out.jpg | Rotting Out — Street Prowl | CREATIVE VISUALS | Personal project |  | Album cover
+07-world-of-pleasure.jpg | World of Pleasure & Friends | CREATIVE VISUALS | Personal project |  | Record sleeve
+08-underdog.jpg | Underdog — Matchless | CREATIVE VISUALS | Personal project |  | Album cover
+09-perfect-snack.jpg | The Perfect Snack | CREATIVE VISUALS | Personal project |  | Poster
+10-grasp.jpg | Grasp | CREATIVE VISUALS | Personal project |  | Poster
+11-burn-out.jpg | Burn Out | CREATIVE VISUALS | Personal project |  | Poster
+12-lulu.jpg | Lulu — Conway & The Alchemist | CREATIVE VISUALS | Personal project |  | Poster
+13-sunshine.jpg | If I Never Felt the Sunshine | CREATIVE VISUALS | Personal project |  | Poster
+14-forest.jpg | Forest | CREATIVE VISUALS | Personal project |  | Collage
+
+m01.jpg | Chef serves the ball | CHARACTER MANIPULATION | Sports brand |  | Story 9:16
+m02.jpg | Vice City striker | CHARACTER MANIPULATION | Sports brand |  | Story 9:16
+m03.jpg | Tunnel trophy standoff | CHARACTER MANIPULATION | Sports brand |  | Story 9:16
+m04.jpg | Knights before kickoff | CHARACTER MANIPULATION | Sports brand |  | Story 9:16
+m05.jpg | Dinner with a trophy | CHARACTER MANIPULATION | Sports brand |  | Story 9:16
+m06.jpg | Istanbul derby throne | CHARACTER MANIPULATION | Sports brand |  | Story 9:16
+m07.jpg | Colosseum night | CHARACTER MANIPULATION | Sports brand |  | Story 9:16
+m08.jpg | Ball factory | CHARACTER MANIPULATION | Sports brand |  | Story 9:16
+m09.jpg | Into the tunnel | CHARACTER MANIPULATION | Sports brand |  | Story 9:16
+m10.jpg | Chess move | CHARACTER MANIPULATION | Sports brand |  | Story 9:16
+m11.jpg | 200,000 FB launch | CHARACTER MANIPULATION | Sports brand |  | Story 9:16
+m12.jpg | World Cup red carpet | CHARACTER MANIPULATION | Sports brand |  | Story 9:16
+m13.jpg | Arm wrestle for the shield | CHARACTER MANIPULATION | Sports brand |  | Story 9:16
+m14.jpg | Golden portrait | CHARACTER MANIPULATION | Sports brand |  | Story 9:16
+m15.jpg | Armenia vs Kazakhstan | CHARACTER MANIPULATION | Sports brand |  | Story 9:16
+m16.jpg | Stanley Cup face-off | CHARACTER MANIPULATION | Sports brand |  | Story 9:16
+m17.jpg | Drop zone | CHARACTER MANIPULATION | Sports brand |  | Story 9:16
+m18.jpg | Player 1 vs Player 2 | CHARACTER MANIPULATION | Sports brand |  | Story 9:16
+m19.jpg | Upside-down rivals | CHARACTER MANIPULATION | Sports brand |  | Story 9:16
+m20.jpg | Night header | CHARACTER MANIPULATION | Sports brand |  | Story 9:16
+m21.jpg | Title belt | CHARACTER MANIPULATION | Sports brand |  | Story 9:16
+m22.jpg | Vault heist | CHARACTER MANIPULATION | Sports brand |  | Story 9:16
+m23.jpg | Bicycle kick bonus | CHARACTER MANIPULATION | Sports brand |  | Story 9:16
+m24.jpg | Paris paperboy | CHARACTER MANIPULATION | Sports brand |  | Story 9:16
+
+Note | ComplexCon | Millio's: brand identity | Millio's is a Los Angeles streetwear label I built from scratch: the wordmark, the O's symbol and Millio, the mascot who carries the whole brand. The system runs on a loud green and a deep purple, bubbly display type and one line that ties it together: Get Loopy, Always in the Loop.
+cc01-cover.jpg | Millio's cover | ComplexCon | Millio's | 2026 | Brand guide
+cc02-logo.jpg | Logo system | ComplexCon | Millio's | 2026 | Brand guide
+cc03-mascot.jpg | Mascot seal | ComplexCon | Millio's | 2026 | Brand guide
+cc04-character.jpg | Character sheet | ComplexCon | Millio's | 2026 | Brand guide
+cc05-colors.jpg | Colour palette | ComplexCon | Millio's | 2026 | Brand guide
+cc06-green.jpg | Green theme | ComplexCon | Millio's | 2026 | Brand guide
+
+Note | ComplexCon | ComplexCon Los Angeles capsule | For ComplexCon Los Angeles (October 3 & 4, 2026) I designed a two-piece event capsule. The tee and hoodie put the ComplexCon wordmark next to Millio and the O's symbol, with the dates and city built into the graphic so each piece works as a souvenir of the weekend.
+cc07-tee.jpg | ComplexCon tee | ComplexCon | Millio's | 2026 | Merch
+cc08-hoodie.jpg | ComplexCon hoodie | ComplexCon | Millio's | 2026 | Merch
+
+Note | ComplexCon | Drop 001: Racetrack | The first collection takes Millio to the race track. Posters, a lookbook, a denim patch jacket and a cropped racing jersey share one visual language: checkerboard, chenille patches, speed and the green-and-purple palette.
+cc09-poster1.jpg | Racetrack poster 01 | ComplexCon | Millio's | 2026 | Poster
+cc10-poster2.jpg | Racetrack poster 02 | ComplexCon | Millio's | 2026 | Poster
+cc11-poster3.jpg | Get Loopy poster | ComplexCon | Millio's | 2026 | Poster
+cc13-denim-fb.jpg | Denim patch jacket | ComplexCon | Millio's | 2026 | Apparel
+cc14-denim.jpg | Denim patch jacket, front | ComplexCon | Millio's | 2026 | Apparel
+cc17-jersey-model.jpg | Cropped racing jersey | ComplexCon | Millio's | 2026 | Lookbook
+cc18-jersey-flat.jpg | Cropped racing jersey, flat | ComplexCon | Millio's | 2026 | Apparel
+cc15-lookbook1.jpg | Racetrack lookbook 01 | ComplexCon | Millio's | 2026 | Lookbook
+cc16-lookbook2.jpg | Racetrack lookbook 02 | ComplexCon | Millio's | 2026 | Lookbook
+
+Note | ComplexCon | From design to production | Each piece in the drop has its own Atelier spec sheet with measurements, a graded size chart, print placement and construction notes, so the design reaches the factory exactly as it was drawn.
+cc12-drop-flats.jpg | Drop 001 tech packs | ComplexCon | Millio's | 2026 | Spec sheet
+cc19-spec.jpg | Racetrack tee spec sheet | ComplexCon | Millio's | 2026 | Spec sheet
+
+Note | ComplexCon | Racetrack Run | To launch the drop I designed a small mobile game: dodge traffic as Millio, and a good run unlocks a 10% discount code for the collection. UI kit plus the four core screens.
+cc20-game.jpg | Racetrack Run | ComplexCon | Millio's | 2026 | Game UI
