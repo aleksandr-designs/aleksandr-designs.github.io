@@ -33,6 +33,25 @@ Contact note: Now showing: Contact
 Index title: Work
 Index note: Promo visuals for sports brands: weekly matchday systems, campaigns and freelance work.
 
+# =====================================================================
+#  MY SOFTWARES — the button at the bottom of the work panel.
+#  One line per tool:   Software | Name | logo | year you started
+#  Logo: "simple:" + a name from simpleicons.org (e.g. simple:figma),
+#        or a file you upload into the "icons" folder (e.g. krea.svg).
+# =====================================================================
+Software title: My softwares
+Software | Photoshop | simple:adobephotoshop | 2019
+Software | Illustrator | simple:adobeillustrator | 2019
+Software | InDesign | simple:adobeindesign | 2019
+Software | Adobe Firefly | adobefirefly.svg | 2023
+Software | Figma | simple:figma | 2020
+Software | Cargo | cargo.svg | 2024
+Software | Krea | krea.svg | 2023
+Software | Magnific | magnific.svg | 2023
+Software | ChatGPT | simple:openai | 2022
+Software | Google Gemini | simple:googlegemini | 2024
+Software | Claude | simple:claude | 2025
+
 # The images floating in the collage, in order (file names, separated by commas).
 # Leave it empty to use the first images in the Work list.
 Collage images: 01-birds-in-the-trap.jpg, 02-heirs-tracklist.jpg, 03-backtrack.jpg, 04-have-heart.jpg, 05-queensway.jpg, 06-rotting-out.jpg, 07-world-of-pleasure.jpg, 08-underdog.jpg, 09-perfect-snack.jpg, 10-grasp.jpg, 11-burn-out.jpg, 12-lulu.jpg, 13-sunshine.jpg, 14-forest.jpg, cc09-poster1.jpg, m02.jpg, m03.jpg

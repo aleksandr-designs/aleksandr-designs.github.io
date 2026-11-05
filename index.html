@@ -34,6 +34,11 @@
       var line = raw.trim();
       if (!line || line.charAt(0) === '#') return;
       if (/^note\s*\|/i.test(line)) { work += '<div class="note">' + esc(line) + '</div>'; return; }
+      if (/^software\s*\|/i.test(line)) {
+        var sp = line.split('|').map(function (x) { return x.trim(); });
+        if (sp[1]) (window.DRIFT_SOFTWARE = window.DRIFT_SOFTWARE || []).push({ name: sp[1], icon: sp[2] || '', year: sp[3] || '' });
+        return;
+      }
       var bar = line.indexOf('|'), file = bar > 0 ? line.slice(0, bar).trim() : '';
       if (file && IMG.test(file)) {
         var src = file.indexOf('/') >= 0 ? file : 'images/' + file;
@@ -189,6 +194,14 @@ var DRIFT_SETTINGS = {
 #drift .dr-lb-cap{display:flex;justify-content:space-between;gap:16px;font-size:13px;font-weight:600;line-height:1.25}
 #drift .dr-lb-cap small{display:block;font-weight:500;opacity:.5}
 #drift .dr-note{position:absolute;left:52px;bottom:18px;width:170px;font-size:12px;font-weight:600;line-height:1.15}
+#drift button.dr-softbtn{font-size:18px;font-weight:600;letter-spacing:-.03em;line-height:1;text-transform:uppercase;opacity:.3;transition:opacity .2s}
+#drift button.dr-softbtn:hover,#drift button.dr-softbtn.on{opacity:1}
+#drift .dr-softs{grid-column:1/-1;display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}
+#drift .dr-soft{display:grid;grid-template-rows:1fr auto auto;justify-items:center;align-items:center;aspect-ratio:1;padding:18px 10px 14px;border:1px solid rgba(10,10,10,.14);text-align:center}
+#drift .dr-softlogo{display:grid;place-items:center;width:46%;height:100%}
+#drift .dr-softlogo img{width:100%;height:auto;max-height:64px;object-fit:contain;filter:grayscale(1) brightness(0)}
+#drift .dr-soft b{font-size:14px;font-weight:600;letter-spacing:-.02em;margin-top:12px}
+#drift .dr-soft small{font-size:11px;font-weight:500;opacity:.5;margin-top:2px}
 #drift-toggle{position:fixed;right:16px;bottom:16px;z-index:2147483001;background:#0A0A0A;color:#fff;font:600 12px/1 "Inter Tight",Helvetica,Arial,sans-serif;padding:10px 14px;border-radius:99px;border:0;cursor:pointer}
 @media (max-width:760px){
   #drift .dr-words,#drift .dr-tag{display:none}
@@ -222,7 +235,7 @@ var DRIFT_SETTINGS = {
     'background words': 'backgroundWords', 'stamp outer': 'stampOuter', 'stamp inner': 'stampInner', 'email': 'email',
     'work label': 'workLabel', 'contact label': 'contactLabel', 'index title': 'indexTitle', 'index note': 'indexNote',
     'contact lines': 'contactLines', 'contact note': 'contactNote', 'collage images': 'collageImages',
-    'socials': 'socials', 'form title': 'formTitle', 'form button': 'formButton', 'form thanks': 'formThanks'
+    'socials': 'socials', 'software title': 'softwareTitle', 'form title': 'formTitle', 'form button': 'formButton', 'form thanks': 'formThanks'
   };
   var labelRe = new RegExp('^\\s*(' + Object.keys(LABELS).join('|') + ')\\s*:\\s*(.*)$', 'i');
   function deepFindText(root) {
@@ -418,7 +431,7 @@ var DRIFT_SETTINGS = {
         '<h2 class="dr-ptitle">' + esc(S.indexTitle) + '</h2>' +
         '<div class="dr-filters"></div>' +
         '<div class="dr-gridwrap"><div class="dr-grid"></div></div>' +
-        '<p class="dr-note">' + esc(S.indexNote) + '</p>' +
+        ((window.DRIFT_SOFTWARE || []).length ? '<button class="dr-note dr-softbtn" type="button">' + esc(S.softwareTitle || 'My softwares') + '</button>' : '<p class="dr-note">' + esc(S.indexNote) + '</p>') +
       '</aside>' +
       '<form class="dr-form" novalidate autocomplete="on">' +
         '<button class="dr-formclose" type="button">✕ Close</button>' +
@@ -545,6 +558,27 @@ var DRIFT_SETTINGS = {
         b.addEventListener('click', function () { current = name; renderFilters(); renderGrid(); });
         filters.appendChild(b);
       });
+      if (SOFT.length && window.innerWidth < 760) {
+        var sb = document.createElement('button'); sb.type = 'button'; sb.className = current === SOFTKEY ? 'on' : '';
+        sb.innerHTML = esc(S.softwareTitle || 'My softwares') + '<sup>(' + SOFT.length + ')</sup>';
+        sb.addEventListener('click', function () { current = SOFTKEY; renderFilters(); renderGrid(); });
+        filters.appendChild(sb);
+      }
+      if (softBtn) softBtn.classList.toggle('on', current === SOFTKEY);
+    }
+    var SOFT = window.DRIFT_SOFTWARE || [], SOFTKEY = '\u0000soft', softBtn = root.querySelector('.dr-softbtn');
+    if (softBtn) softBtn.addEventListener('click', function () { current = SOFTKEY; renderFilters(); renderGrid(); var gw = root.querySelector('.dr-gridwrap'); if (gw) gw.scrollTop = 0; });
+    var rfT; on(window, 'resize', function () { clearTimeout(rfT); rfT = setTimeout(renderFilters, 200); });
+    function renderSoft() {
+      var box = document.createElement('div'); box.className = 'dr-softs';
+      SOFT.forEach(function (sw) {
+        var t = document.createElement('div'); t.className = 'dr-soft';
+        var ic = sw.icon || '', src = /^simple:/i.test(ic) ? 'https://cdn.jsdelivr.net/npm/simple-icons@13/icons/' + ic.slice(7).trim().toLowerCase() + '.svg' : (ic ? (ic.indexOf('/') >= 0 ? ic : 'icons/' + ic) : '');
+        t.innerHTML = '<span class="dr-softlogo">' + (src ? '<img src="' + esc(encodeURI(src)) + '" alt="" draggable="false">' : '') + '</span>' +
+          '<b>' + esc(sw.name) + '</b><small>' + (sw.year ? 'Since ' + esc(sw.year) : '') + '</small>';
+        box.appendChild(t);
+      });
+      grid.appendChild(box);
     }
     /* full-size viewer */
     var lb = root.querySelector('.dr-lb'), lbImg = lb.querySelector('img'), lbList = [], lbAt = 0;
@@ -591,6 +625,7 @@ var DRIFT_SETTINGS = {
     }
     function renderGrid() {
       grid.innerHTML = '';
+      if (current === SOFTKEY) { renderSoft(); return; }
       projects.forEach(function (p) {
         notes.forEach(function (n) { if (n.before === p) noteCard(n); });
         if (current !== 'All' && p.category !== current) return;
