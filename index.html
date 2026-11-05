@@ -236,7 +236,7 @@ var DRIFT_SETTINGS = {
     'background words': 'backgroundWords', 'stamp outer': 'stampOuter', 'stamp inner': 'stampInner', 'email': 'email',
     'work label': 'workLabel', 'contact label': 'contactLabel', 'index title': 'indexTitle', 'index note': 'indexNote',
     'contact lines': 'contactLines', 'contact note': 'contactNote', 'collage images': 'collageImages',
-    'socials': 'socials', 'software title': 'softwareTitle', 'form title': 'formTitle', 'form button': 'formButton', 'form thanks': 'formThanks'
+    'socials': 'socials', 'software title': 'softwareTitle', 'form title': 'formTitle', 'form button': 'formButton', 'form thanks': 'formThanks', 'form key': 'formKey'
   };
   var labelRe = new RegExp('^\\s*(' + Object.keys(LABELS).join('|') + ')\\s*:\\s*(.*)$', 'i');
   function deepFindText(root) {
@@ -791,13 +791,24 @@ var DRIFT_SETTINGS = {
       var data = { name: form.elements.name.value, email: form.elements.email.value, message: form.elements.message.value,
         _subject: 'New message from your portfolio', _template: 'box', _captcha: 'false', _replyto: form.elements.email.value };
       sendBtn.disabled = true; formStatus.textContent = 'Sending…';
-      fetch('https://formsubmit.co/ajax/' + encodeURIComponent(to), {
-        method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(data)
+      /* if sending fails, offer a direct mail link with the message already filled in */
+      function fallback() {
+        var href = 'mailto:' + to + '?subject=' + encodeURIComponent('Hello from your portfolio') +
+          '&body=' + encodeURIComponent(form.elements.message.value + '\n\n' + form.elements.name.value + ' (' + form.elements.email.value + ')');
+        formStatus.innerHTML = 'Couldn\'t send from here. <a href="' + esc(href) + '" style="color:inherit;text-decoration:underline">Email me directly: ' + esc(to) + '</a>';
+      }
+      var key = String(S.formKey || '').trim(), url, body;
+      if (key) { url = 'https://api.web3forms.com/submit'; data.access_key = key; data.subject = data._subject; data.from_name = data.name; }
+      else url = 'https://formsubmit.co/ajax/' + encodeURIComponent(to);
+      var ctl = window.AbortController ? new AbortController() : null, timer = setTimeout(function () { if (ctl) ctl.abort(); }, 15000);
+      fetch(url, {
+        method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(data), signal: ctl ? ctl.signal : undefined
       }).then(function (r) { return r.json(); }).then(function (d) {
         if (String(d.success) === 'true') { formStatus.textContent = S.formThanks || 'Sent. Thank you!'; form.reset(); }
-        else formStatus.textContent = d.message || 'Something went wrong. Please try again.';
-      }).catch(function () { formStatus.textContent = 'Could not send. Check your connection and try again.'; })
-        .then(function () { sendBtn.disabled = false; });
+        else if (/activat/i.test(d.message || '')) formStatus.textContent = 'Almost there: the site owner needs to activate this form.';
+        else fallback();
+      }).catch(fallback)
+        .then(function () { clearTimeout(timer); sendBtn.disabled = false; });
     });
     headEl.addEventListener('click', function (e) {
       var a = e.target.closest && e.target.closest('a[data-act]'); if (!a) return;
