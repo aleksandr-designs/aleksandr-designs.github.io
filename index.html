@@ -196,10 +196,11 @@ var DRIFT_SETTINGS = {
 #drift .dr-note{position:absolute;left:52px;bottom:18px;width:170px;font-size:12px;font-weight:600;line-height:1.15}
 #drift button.dr-softbtn{font-size:18px;font-weight:600;letter-spacing:-.03em;line-height:1;text-transform:uppercase;opacity:.3;transition:opacity .2s}
 #drift button.dr-softbtn:hover,#drift button.dr-softbtn.on{opacity:1}
-#drift .dr-softs{grid-column:1/-1;display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}
-#drift .dr-soft{display:grid;grid-template-rows:1fr auto auto;justify-items:center;align-items:center;aspect-ratio:1;padding:18px 10px 14px;border:1px solid rgba(10,10,10,.14);text-align:center}
-#drift .dr-softlogo{display:grid;place-items:center;width:46%;height:100%}
-#drift .dr-softlogo img{width:100%;height:auto;max-height:64px;object-fit:contain;filter:grayscale(1) brightness(0)}
+#drift .dr-softs{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px 8px}
+@media (max-width:760px){#drift .dr-softs{grid-template-columns:repeat(2,minmax(0,1fr))}}
+#drift .dr-soft{display:grid;grid-template-rows:1fr auto auto;justify-items:center;align-items:center;aspect-ratio:4/3;padding:18px 10px 14px;text-align:center}
+#drift .dr-softlogo{display:grid;place-items:center;width:34%;height:100%}
+#drift .dr-softlogo img{width:100%;height:auto;max-height:72px;object-fit:contain;filter:grayscale(1) brightness(0)}
 #drift .dr-soft b{font-size:14px;font-weight:600;letter-spacing:-.02em;margin-top:12px}
 #drift .dr-soft small{font-size:11px;font-weight:500;opacity:.5;margin-top:2px}
 #drift-toggle{position:fixed;right:16px;bottom:16px;z-index:2147483001;background:#0A0A0A;color:#fff;font:600 12px/1 "Inter Tight",Helvetica,Arial,sans-serif;padding:10px 14px;border-radius:99px;border:0;cursor:pointer}
