@@ -21,6 +21,8 @@ Background words: Aleksandr®, Graphic, Design, Ideas, Brands, Campaigns, System
 Stamp outer: MADE TO STOP THE SCROLL · AND THE STREET ·
 Stamp inner: HALF A SECOND · HALF A SECOND ·
 Email: galstyantopaz@gmail.com
+# Form key: your public Web3Forms key. The mail form sends through it to the address above.
+Form key: f5d399de-4e12-46df-a880-d952a7316774
 # CONTACT: clicking CONTACT flips the headline into these lines.
 #   "= form" opens the mail form. "Socials" flips into the links listed under Socials.
 Contact lines: Email me = form / Socials
