@@ -138,3 +138,16 @@ cc19-spec.jpg | Racetrack tee spec sheet | ComplexCon | Millio's | 2026 | Spec s
 
 Note | ComplexCon | Racetrack Run | To launch the drop I designed a small mobile game: dodge traffic as Millio, and a good run unlocks a 10% discount code for the collection. UI kit plus the four core screens.
 cc20-game.jpg | Racetrack Run | ComplexCon | Millio's | 2026 | Game UI
+
+Note | FIGHTING WITH ARROWS | Fighting With Arrows: Shopify store | I designed and built the whole online store for Fighting With Arrows, a project-brand rooted in a comic "rrreality" whose debut drop is a line of sterling silver RRR!RINGS. Space-moon hero, hand-drawn wordmark, product pages, the About RR story and the "Send YO!" footer.
+fwa01.jpg | Home: hero | FIGHTING WITH ARROWS | Fighting With Arrows |  | Shopify website
+fwa02.jpg | Home: wordmark and rings | FIGHTING WITH ARROWS | Fighting With Arrows |  | Shopify website
+fwa03.jpg | Home: products and footer | FIGHTING WITH ARROWS | Fighting With Arrows |  | Shopify website
+fwa08.jpg | Shop | FIGHTING WITH ARROWS | Fighting With Arrows |  | Shopify website
+fwa09.jpg | Product: The Universal Yo! | FIGHTING WITH ARROWS | Fighting With Arrows |  | Shopify website
+fwa10.jpg | Product gallery | FIGHTING WITH ARROWS | Fighting With Arrows |  | Shopify website
+fwa11.jpg | Product: yo! | FIGHTING WITH ARROWS | Fighting With Arrows |  | Shopify website
+fwa04.jpg | About RR | FIGHTING WITH ARROWS | Fighting With Arrows |  | Shopify website
+fwa05.jpg | About RR: friends and collaborators | FIGHTING WITH ARROWS | Fighting With Arrows |  | Shopify website
+fwa06.jpg | About RR: sketchbooks | FIGHTING WITH ARROWS | Fighting With Arrows |  | Shopify website
+fwa07.jpg | Footer: Send YO! | FIGHTING WITH ARROWS | Fighting With Arrows |  | Shopify website
