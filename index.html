@@ -388,7 +388,12 @@ var DRIFT_SETTINGS = {
   /* ---------- build ---------- */
   var root = null, cleanup = [];
   /* the floating tiles use small copies from images/thumbs/ (falls back to the full image if there is no copy) */
-  function thumb(src) { return /^images\/[^\/]+$/.test(src) ? src.replace(/^images\//, 'images/thumbs/') : src; }
+  function thumb(src) {
+    var s = String(src), m = s.match(/^((?:https?:\/\/[^\/]+)?\/?(?:[^?#]*\/)?)images\/([^\/?#]+)$/);
+    if (!m) return s;
+    if (/^https?:/.test(s) && s.indexOf(location.origin + '/') !== 0) return s;
+    return m[1] + 'images/thumbs/' + m[2];
+  }
   function tileHTML(p) {
     return '<div class="dr-tile"><img alt="' + esc(p.title) + '" draggable="false" decoding="async" src="' + esc(thumb(p.pics[0].src)) + '" data-full="' + esc(p.pics[0].src) + '" onerror="if(this.dataset.full&&this.src.indexOf(\'/thumbs/\')>=0)this.src=this.dataset.full">' +
       (p.pics.length > 1 ? '<span class="dr-count">1/' + p.pics.length + '</span>' : '') + '</div>';
