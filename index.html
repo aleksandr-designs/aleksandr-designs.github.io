@@ -33,6 +33,12 @@
     txt.replace(/\r/g, '').split('\n').forEach(function (raw) {
       var line = raw.trim();
       if (!line || line.charAt(0) === '#') return;
+      var ga = line.match(/^analytics:\s*([a-z0-9-]+)\s*$/i);
+      if (ga) {
+        var gs = document.createElement('script'); gs.async = true; gs.src = 'https://gc.zgo.at/count.js';
+        gs.setAttribute('data-goatcounter', 'https://' + ga[1].toLowerCase() + '.goatcounter.com/count');
+        document.head.appendChild(gs); return;
+      }
       if (/^note\s*\|/i.test(line)) { work += '<div class="note">' + esc(line) + '</div>'; return; }
       if (/^software\s*\|/i.test(line)) {
         var sp = line.split('|').map(function (x) { return x.trim(); });
