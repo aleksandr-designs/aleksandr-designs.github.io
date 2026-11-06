@@ -387,17 +387,28 @@ var DRIFT_SETTINGS = {
 
   /* ---------- build ---------- */
   var root = null, cleanup = [];
+  /* the floating tiles use small copies from images/thumbs/ (falls back to the full image if there is no copy) */
+  function thumb(src) { return /^images\/[^\/]+$/.test(src) ? src.replace(/^images\//, 'images/thumbs/') : src; }
   function tileHTML(p) {
-    return '<div class="dr-tile"><img alt="' + esc(p.title) + '" draggable="false" src="' + esc(p.pics[0].src) + '">' +
+    return '<div class="dr-tile"><img alt="' + esc(p.title) + '" draggable="false" decoding="async" src="' + esc(thumb(p.pics[0].src)) + '" data-full="' + esc(p.pics[0].src) + '" onerror="if(this.dataset.full&&this.src.indexOf(\'/thumbs/\')>=0)this.src=this.dataset.full">' +
       (p.pics.length > 1 ? '<span class="dr-count">1/' + p.pics.length + '</span>' : '') + '</div>';
   }
   function cycle(container, p) {
     if (p.pics.length < 2) return;
     var k = 0, id = setInterval(function () {
-      k = (k + 1) % p.pics.length;
-      var img = container.querySelector('img'), c = container.querySelector('.dr-count');
-      if (img) img.src = p.pics[k].src;
-      if (c) c.textContent = (k + 1) + '/' + p.pics.length;
+      var next = (k + 1) % p.pics.length, img = container.querySelector('img'), c = container.querySelector('.dr-count');
+      if (!img) return;
+      /* decode the next picture off-screen first, then swap it in, so the animation never waits on it */
+      var pre = new Image(), want = thumb(p.pics[next].src), done = false;
+      function swap(src) {
+        if (done) return; done = true; k = next;
+        img.dataset.full = p.pics[next].src; img.src = src;
+        if (c) c.textContent = (k + 1) + '/' + p.pics.length;
+      }
+      pre.onerror = function () { var full = new Image(); full.src = p.pics[next].src; (full.decode ? full.decode() : Promise.resolve()).then(function () { swap(full.src); }, function () {}); };
+      pre.src = want;
+      if (pre.decode) pre.decode().then(function () { swap(want); }, function () {});
+      else pre.onload = function () { swap(want); };
     }, 1700);
     cleanup.push(function () { clearInterval(id); });
   }
@@ -931,22 +942,23 @@ var DRIFT_SETTINGS = {
       '" stroke-width="6.5"><path d="M22 45 L32 20.5 L42 45 C44.5 50.5 53 50.5 57 42 A27 27 0 1 0 43 56.6"/><path d="M25.5 37 H38.5"/></g></svg>');
   }
   var light = new Image(), night = new Image(); light.src = src('#0a0a0a'); night.src = src('#ffffff');
-  var link = null;
+  var link = null, STEPS = 150, cache = { light: [], night: [] };
+  /* each angle is drawn once and remembered, so the page never re-encodes the icon while the collage moves */
   function tick() {
-    var img = dark.matches ? night : light; if (!img.complete || !img.naturalWidth) return;
+    var key = dark.matches ? 'night' : 'light', img = key === 'night' ? night : light; if (!img.complete || !img.naturalWidth) return;
     if (!link) {
       document.querySelectorAll('link[rel="icon"]').forEach(function (l) { l.remove(); });
       link = document.createElement('link'); link.rel = 'icon'; link.type = 'image/png'; document.head.appendChild(link);
     }
-    var a = ((Date.now() % PERIOD) / PERIOD) * Math.PI * 2;
-    ctx.clearRect(0, 0, 64, 64); ctx.save(); ctx.translate(32, 32); ctx.rotate(a); ctx.drawImage(img, -32, -32, 64, 64); ctx.restore();
-    link.href = cv.toDataURL('image/png');
+    var i = Math.floor((Date.now() % PERIOD) / PERIOD * STEPS), url = cache[key][i];
+    if (!url) {
+      ctx.clearRect(0, 0, 64, 64); ctx.save(); ctx.translate(32, 32); ctx.rotate(i / STEPS * Math.PI * 2); ctx.drawImage(img, -32, -32, 64, 64); ctx.restore();
+      url = cache[key][i] = cv.toDataURL('image/png');
+    }
+    if (link.href !== url) link.href = url;
   }
-  /* redraw on every screen refresh (about 60 times a second) while the tab is visible; Chrome slows hidden tabs anyway */
-  var last = 0;
-  function loop(t) { if (t - last >= 16) { last = t; tick(); } requestAnimationFrame(loop); }
-  requestAnimationFrame(loop);
-  setInterval(function () { if (document.hidden) tick(); }, 250);
+  /* 25 updates a second: as fast as Chrome actually repaints a tab icon, without stealing time from the page */
+  setInterval(tick, 40);
 })();
 </script>
 </body>
