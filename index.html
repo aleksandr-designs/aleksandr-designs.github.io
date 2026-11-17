@@ -163,6 +163,10 @@ var DRIFT_SETTINGS = {
 #drift .dr-nav{position:absolute;top:14px;z-index:6;display:grid;gap:2px;color:#fff;mix-blend-mode:difference}
 #drift .dr-panel{position:absolute;top:0;bottom:0;right:0;width:min(78vw,1240px);z-index:10;transform:translateX(calc(100% - clamp(52px,5.4vw,86px)));transition:transform .75s cubic-bezier(.7,0,.2,1);display:grid;grid-template-columns:34px 190px minmax(0,1fr);grid-template-rows:auto minmax(0,1fr);column-gap:18px;padding-right:16px}
 #drift.dr-open .dr-panel{transform:translateX(0);box-shadow:-1px 0 0 rgba(0,0,0,.06)}
+#drift .dr-nav .dr-small,#drift .dr-more{font-size:clamp(20px,1.8vw,30px);letter-spacing:-.025em;line-height:1.1}
+#drift .dr-about{top:clamp(100px,8.6vw,128px)}
+#drift:not(.dr-open) .dr-panel{animation:drnudge 5s cubic-bezier(.3,0,.2,1) infinite}
+@keyframes drnudge{0%,84%,100%{translate:0 0}88%{translate:-34px 0}92%{translate:0 0}95%{translate:-14px 0}98%{translate:0 0}}
 #drift .dr-peek{position:absolute;left:0;top:0;bottom:0;width:clamp(52px,5.4vw,86px);z-index:2;display:flex;align-items:center;justify-content:center}
 #drift .dr-peek span{writing-mode:vertical-rl;transform:rotate(180deg);font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;animation:drblink 1.2s steps(1,end) infinite}
 @keyframes drblink{50%{opacity:0}}
@@ -212,7 +216,7 @@ var DRIFT_SETTINGS = {
 #drift-toggle{position:fixed;right:16px;bottom:16px;z-index:2147483001;background:#0A0A0A;color:#fff;font:600 12px/1 "Inter Tight",Helvetica,Arial,sans-serif;padding:10px 14px;border-radius:99px;border:0;cursor:pointer}
 @media (max-width:760px){
   #drift .dr-words,#drift .dr-tag{display:none}
-  #drift .dr-about{width:calc(100vw - 2 * var(--gut, 16px) - 44px);opacity:0;pointer-events:none;overflow:auto;max-height:calc(100% - 76px - 3vh - var(--hl,3) * .873 * clamp(42px,7.6vw,132px) * var(--hs,1) - 48px)}
+  #drift .dr-about{width:calc(100vw - 2 * var(--gut, 16px) - 44px);opacity:0;pointer-events:none;overflow:auto;max-height:calc(100% - clamp(100px,8.6vw,128px) - 3vh - var(--hl,3) * .873 * clamp(42px,7.6vw,132px) * var(--hs,1) - 48px)}
   #drift.dr-about-on .dr-about{transform:none;opacity:1;pointer-events:auto}
   #drift.dr-about-on .dr-stamp{opacity:0}
   #drift .dr-panel{width:100vw;grid-template-columns:22px minmax(0,1fr);grid-template-rows:auto auto minmax(0,1fr);column-gap:8px;transform:translateX(calc(100% - 44px))}
@@ -224,7 +228,7 @@ var DRIFT_SETTINGS = {
   #drift .dr-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   #drift .dr-note{display:none}
 }
-@media (prefers-reduced-motion:reduce){#drift .dr-peek span{animation:none}#drift .dr-stamp svg{animation:none}#drift .dr-panel,#drift .dr-hero{transition:none}}
+@media (prefers-reduced-motion:reduce){#drift .dr-peek span{animation:none}#drift .dr-panel{animation:none!important}#drift .dr-stamp svg{animation:none}#drift .dr-panel,#drift .dr-hero{transition:none}}
 </style>
 
 <script>
