@@ -12,7 +12,7 @@ Sometimes it's a campaign. Sometimes it's a brand built from zero: the logo, the
 I work like a tourist in every discipline. Curious, a little naive, never too precious. Purists know the rules too well to break them. I'd rather walk in with fresh eyes, touch everything, and leave something that wasn't there before.
 My tools are whatever gets the idea out of my head fastest. AI, a pen, a plugin I wrote at 2 a.m. because I refused to do the same thing by hand one more time. The tool is never the point. The edit is.
 I design for the thumb mid-scroll and the person walking past a wall. If either one stops for half a second, the job's done. If they screenshot it, even better.
-Still a student. Always will be.
+Still learning. Always will be.
 Based in Yerevan. Open to relocation.
 About link: More about me
 Tagline 1:
@@ -35,7 +35,7 @@ Form button: Send
 Form thanks: Got it. I'll write back soon.
 Contact note: Now showing: Contact
 Index title: Work
-Index note: Promo visuals for sports brands: weekly matchday systems, campaigns and freelance work.
+Index note: Brand identities, campaigns, a Shopify store and AI visuals. Client work first, personal projects after.
 
 # =====================================================================
 #  MY SOFTWARES — the button at the bottom of the work panel.
@@ -58,7 +58,7 @@ Software | Claude | simple:claude | 2025
 
 # The images floating in the collage, in order (file names, separated by commas).
 # Leave it empty to use the first images in the Work list.
-Collage images: 01-birds-in-the-trap.jpg, 02-heirs-tracklist.jpg, 03-backtrack.jpg, 04-have-heart.jpg, 05-queensway.jpg, 06-rotting-out.jpg, 07-world-of-pleasure.jpg, 08-underdog.jpg, 09-perfect-snack.jpg, 10-grasp.jpg, 11-burn-out.jpg, 12-lulu.jpg, 13-sunshine.jpg, 14-forest.jpg, cc09-poster1.jpg, m02.jpg, m03.jpg
+Collage images: cc09-poster1.jpg, 03-backtrack.jpg, m02.jpg, cc01-cover.jpg, 08-underdog.jpg, fwa01.jpg, 05-queensway.jpg, m12.jpg, cc07-tee.jpg, 12-lulu.jpg, cc03-mascot.jpg, 13-sunshine.jpg, m03.jpg, 06-rotting-out.jpg, cc15-lookbook1.jpg, 01-birds-in-the-trap.jpg, fwa09.jpg
 
 
 # =====================================================================
@@ -73,6 +73,76 @@ Collage images: 01-birds-in-the-trap.jpg, 02-heirs-tracklist.jpg, 03-backtrack.j
 #  - Leave a part empty but keep the bars, e.g.  | Personal project |  | Poster
 # =====================================================================
 
+Note | MILLIO'S | Millio's: brand identity | Millio's is a Los Angeles streetwear label I built from scratch: the wordmark, the O's symbol and Millio, the mascot who carries the whole brand. The system runs on a loud green and a deep purple, bubbly display type and one line that ties it together: Get Loopy, Always in the Loop.
+cc01-cover.jpg | Millio's cover | MILLIO'S | Millio's | 2026 | Brand guide
+cc02-logo.jpg | Logo system | MILLIO'S | Millio's | 2026 | Brand guide
+cc03-mascot.jpg | Mascot seal | MILLIO'S | Millio's | 2026 | Brand guide
+cc04-character.jpg | Character sheet | MILLIO'S | Millio's | 2026 | Brand guide
+cc05-colors.jpg | Colour palette | MILLIO'S | Millio's | 2026 | Brand guide
+cc06-green.jpg | Green theme | MILLIO'S | Millio's | 2026 | Brand guide
+
+Note | MILLIO'S | ComplexCon Los Angeles capsule | For ComplexCon Los Angeles (October 3 & 4, 2026) I designed a two-piece event capsule. The tee and hoodie put the ComplexCon wordmark next to Millio and the O's symbol, with the dates and city built into the graphic so each piece works as a souvenir of the weekend.
+cc07-tee.jpg | ComplexCon tee | MILLIO'S | Millio's | 2026 | Merch
+cc08-hoodie.jpg | ComplexCon hoodie | MILLIO'S | Millio's | 2026 | Merch
+
+Note | MILLIO'S | Drop 001: Racetrack | The first collection takes Millio to the race track. Posters, a lookbook, a denim patch jacket and a cropped racing jersey share one visual language: checkerboard, chenille patches, speed and the green-and-purple palette.
+cc09-poster1.jpg | Racetrack poster 01 | MILLIO'S | Millio's | 2026 | Poster
+cc10-poster2.jpg | Racetrack poster 02 | MILLIO'S | Millio's | 2026 | Poster
+cc11-poster3.jpg | Get Loopy poster | MILLIO'S | Millio's | 2026 | Poster
+cc13-denim-fb.jpg | Denim patch jacket | MILLIO'S | Millio's | 2026 | Apparel
+cc14-denim.jpg | Denim patch jacket, front | MILLIO'S | Millio's | 2026 | Apparel
+cc17-jersey-model.jpg | Cropped racing jersey | MILLIO'S | Millio's | 2026 | Lookbook
+cc18-jersey-flat.jpg | Cropped racing jersey, flat | MILLIO'S | Millio's | 2026 | Apparel
+cc15-lookbook1.jpg | Racetrack lookbook 01 | MILLIO'S | Millio's | 2026 | Lookbook
+cc16-lookbook2.jpg | Racetrack lookbook 02 | MILLIO'S | Millio's | 2026 | Lookbook
+
+Note | MILLIO'S | From design to production | Each piece in the drop has its own Atelier spec sheet with measurements, a graded size chart, print placement and construction notes, so the design reaches the factory exactly as it was drawn.
+cc12-drop-flats.jpg | Drop 001 tech packs | MILLIO'S | Millio's | 2026 | Spec sheet
+cc19-spec.jpg | Racetrack tee spec sheet | MILLIO'S | Millio's | 2026 | Spec sheet
+
+Note | MILLIO'S | Racetrack Run | To launch the drop I designed a small mobile game: dodge traffic as Millio, and a good run unlocks a 10% discount code for the collection. UI kit plus the four core screens.
+cc20-game.jpg | Racetrack Run | MILLIO'S | Millio's | 2026 | Game UI
+
+Note | FIGHTING WITH ARROWS | Fighting With Arrows: Shopify store | I designed and built the whole online store for Fighting With Arrows, a project-brand rooted in a comic "rrreality" whose debut drop is a line of sterling silver RRR!RINGS. Space-moon hero, hand-drawn wordmark, product pages, the About RR story and the "Send YO!" footer.
+fwa01.jpg | Home: hero | FIGHTING WITH ARROWS | Fighting With Arrows |  | Shopify website
+fwa02.jpg | Home: wordmark and rings | FIGHTING WITH ARROWS | Fighting With Arrows |  | Shopify website
+fwa03.jpg | Home: products and footer | FIGHTING WITH ARROWS | Fighting With Arrows |  | Shopify website
+fwa08.jpg | Shop | FIGHTING WITH ARROWS | Fighting With Arrows |  | Shopify website
+fwa09.jpg | Product: The Universal Yo! | FIGHTING WITH ARROWS | Fighting With Arrows |  | Shopify website
+fwa10.jpg | Product gallery | FIGHTING WITH ARROWS | Fighting With Arrows |  | Shopify website
+fwa11.jpg | Product: yo! | FIGHTING WITH ARROWS | Fighting With Arrows |  | Shopify website
+fwa04.jpg | About RR | FIGHTING WITH ARROWS | Fighting With Arrows |  | Shopify website
+fwa05.jpg | About RR: friends and collaborators | FIGHTING WITH ARROWS | Fighting With Arrows |  | Shopify website
+fwa06.jpg | About RR: sketchbooks | FIGHTING WITH ARROWS | Fighting With Arrows |  | Shopify website
+fwa07.jpg | Footer: Send YO! | FIGHTING WITH ARROWS | Fighting With Arrows |  | Shopify website
+
+Note | SPORTS CAMPAIGNS | Sports campaigns: social stories | Campaign visuals for a sports brand's social channels, made in-house at RedCore Business Group. Each 9:16 story turns a match, a promo or a launch into one scene that stops the scroll, built with photo compositing and AI tools (Krea, Magnific, Firefly).
+m01.jpg | Chef serves the ball | SPORTS CAMPAIGNS | Sports brand |  | Story 9:16
+m02.jpg | Vice City striker | SPORTS CAMPAIGNS | Sports brand |  | Story 9:16
+m03.jpg | Tunnel trophy standoff | SPORTS CAMPAIGNS | Sports brand |  | Story 9:16
+m04.jpg | Knights before kickoff | SPORTS CAMPAIGNS | Sports brand |  | Story 9:16
+m05.jpg | Dinner with a trophy | SPORTS CAMPAIGNS | Sports brand |  | Story 9:16
+m06.jpg | Istanbul derby throne | SPORTS CAMPAIGNS | Sports brand |  | Story 9:16
+m07.jpg | Colosseum night | SPORTS CAMPAIGNS | Sports brand |  | Story 9:16
+m08.jpg | Ball factory | SPORTS CAMPAIGNS | Sports brand |  | Story 9:16
+m09.jpg | Into the tunnel | SPORTS CAMPAIGNS | Sports brand |  | Story 9:16
+m10.jpg | Chess move | SPORTS CAMPAIGNS | Sports brand |  | Story 9:16
+m11.jpg | 200,000 FB launch | SPORTS CAMPAIGNS | Sports brand |  | Story 9:16
+m12.jpg | World Cup red carpet | SPORTS CAMPAIGNS | Sports brand |  | Story 9:16
+m13.jpg | Arm wrestle for the shield | SPORTS CAMPAIGNS | Sports brand |  | Story 9:16
+m14.jpg | Golden portrait | SPORTS CAMPAIGNS | Sports brand |  | Story 9:16
+m15.jpg | Armenia vs Kazakhstan | SPORTS CAMPAIGNS | Sports brand |  | Story 9:16
+m16.jpg | Stanley Cup face-off | SPORTS CAMPAIGNS | Sports brand |  | Story 9:16
+m17.jpg | Drop zone | SPORTS CAMPAIGNS | Sports brand |  | Story 9:16
+m18.jpg | Player 1 vs Player 2 | SPORTS CAMPAIGNS | Sports brand |  | Story 9:16
+m19.jpg | Upside-down rivals | SPORTS CAMPAIGNS | Sports brand |  | Story 9:16
+m20.jpg | Night header | SPORTS CAMPAIGNS | Sports brand |  | Story 9:16
+m21.jpg | Title belt | SPORTS CAMPAIGNS | Sports brand |  | Story 9:16
+m22.jpg | Vault heist | SPORTS CAMPAIGNS | Sports brand |  | Story 9:16
+m23.jpg | Bicycle kick bonus | SPORTS CAMPAIGNS | Sports brand |  | Story 9:16
+m24.jpg | Paris paperboy | SPORTS CAMPAIGNS | Sports brand |  | Story 9:16
+
+Note | CREATIVE VISUALS | Personal projects | Self-initiated album covers, sleeves and posters. This is where I test type and image ideas before they reach client work.
 01-birds-in-the-trap.jpg | Birds in the Trap | CREATIVE VISUALS | Personal project |  | Album cover
 02-heirs-tracklist.jpg | Heirs | CREATIVE VISUALS | Personal project |  | Back cover
 03-backtrack.jpg | Backtrack — Bad to My World | CREATIVE VISUALS | Personal project |  | Album cover
@@ -87,71 +157,3 @@ Collage images: 01-birds-in-the-trap.jpg, 02-heirs-tracklist.jpg, 03-backtrack.j
 12-lulu.jpg | Lulu — Conway & The Alchemist | CREATIVE VISUALS | Personal project |  | Poster
 13-sunshine.jpg | If I Never Felt the Sunshine | CREATIVE VISUALS | Personal project |  | Poster
 14-forest.jpg | Forest | CREATIVE VISUALS | Personal project |  | Collage
-
-m01.jpg | Chef serves the ball | CHARACTER MANIPULATION | Sports brand |  | Story 9:16
-m02.jpg | Vice City striker | CHARACTER MANIPULATION | Sports brand |  | Story 9:16
-m03.jpg | Tunnel trophy standoff | CHARACTER MANIPULATION | Sports brand |  | Story 9:16
-m04.jpg | Knights before kickoff | CHARACTER MANIPULATION | Sports brand |  | Story 9:16
-m05.jpg | Dinner with a trophy | CHARACTER MANIPULATION | Sports brand |  | Story 9:16
-m06.jpg | Istanbul derby throne | CHARACTER MANIPULATION | Sports brand |  | Story 9:16
-m07.jpg | Colosseum night | CHARACTER MANIPULATION | Sports brand |  | Story 9:16
-m08.jpg | Ball factory | CHARACTER MANIPULATION | Sports brand |  | Story 9:16
-m09.jpg | Into the tunnel | CHARACTER MANIPULATION | Sports brand |  | Story 9:16
-m10.jpg | Chess move | CHARACTER MANIPULATION | Sports brand |  | Story 9:16
-m11.jpg | 200,000 FB launch | CHARACTER MANIPULATION | Sports brand |  | Story 9:16
-m12.jpg | World Cup red carpet | CHARACTER MANIPULATION | Sports brand |  | Story 9:16
-m13.jpg | Arm wrestle for the shield | CHARACTER MANIPULATION | Sports brand |  | Story 9:16
-m14.jpg | Golden portrait | CHARACTER MANIPULATION | Sports brand |  | Story 9:16
-m15.jpg | Armenia vs Kazakhstan | CHARACTER MANIPULATION | Sports brand |  | Story 9:16
-m16.jpg | Stanley Cup face-off | CHARACTER MANIPULATION | Sports brand |  | Story 9:16
-m17.jpg | Drop zone | CHARACTER MANIPULATION | Sports brand |  | Story 9:16
-m18.jpg | Player 1 vs Player 2 | CHARACTER MANIPULATION | Sports brand |  | Story 9:16
-m19.jpg | Upside-down rivals | CHARACTER MANIPULATION | Sports brand |  | Story 9:16
-m20.jpg | Night header | CHARACTER MANIPULATION | Sports brand |  | Story 9:16
-m21.jpg | Title belt | CHARACTER MANIPULATION | Sports brand |  | Story 9:16
-m22.jpg | Vault heist | CHARACTER MANIPULATION | Sports brand |  | Story 9:16
-m23.jpg | Bicycle kick bonus | CHARACTER MANIPULATION | Sports brand |  | Story 9:16
-m24.jpg | Paris paperboy | CHARACTER MANIPULATION | Sports brand |  | Story 9:16
-
-Note | ComplexCon | Millio's: brand identity | Millio's is a Los Angeles streetwear label I built from scratch: the wordmark, the O's symbol and Millio, the mascot who carries the whole brand. The system runs on a loud green and a deep purple, bubbly display type and one line that ties it together: Get Loopy, Always in the Loop.
-cc01-cover.jpg | Millio's cover | ComplexCon | Millio's | 2026 | Brand guide
-cc02-logo.jpg | Logo system | ComplexCon | Millio's | 2026 | Brand guide
-cc03-mascot.jpg | Mascot seal | ComplexCon | Millio's | 2026 | Brand guide
-cc04-character.jpg | Character sheet | ComplexCon | Millio's | 2026 | Brand guide
-cc05-colors.jpg | Colour palette | ComplexCon | Millio's | 2026 | Brand guide
-cc06-green.jpg | Green theme | ComplexCon | Millio's | 2026 | Brand guide
-
-Note | ComplexCon | ComplexCon Los Angeles capsule | For ComplexCon Los Angeles (October 3 & 4, 2026) I designed a two-piece event capsule. The tee and hoodie put the ComplexCon wordmark next to Millio and the O's symbol, with the dates and city built into the graphic so each piece works as a souvenir of the weekend.
-cc07-tee.jpg | ComplexCon tee | ComplexCon | Millio's | 2026 | Merch
-cc08-hoodie.jpg | ComplexCon hoodie | ComplexCon | Millio's | 2026 | Merch
-
-Note | ComplexCon | Drop 001: Racetrack | The first collection takes Millio to the race track. Posters, a lookbook, a denim patch jacket and a cropped racing jersey share one visual language: checkerboard, chenille patches, speed and the green-and-purple palette.
-cc09-poster1.jpg | Racetrack poster 01 | ComplexCon | Millio's | 2026 | Poster
-cc10-poster2.jpg | Racetrack poster 02 | ComplexCon | Millio's | 2026 | Poster
-cc11-poster3.jpg | Get Loopy poster | ComplexCon | Millio's | 2026 | Poster
-cc13-denim-fb.jpg | Denim patch jacket | ComplexCon | Millio's | 2026 | Apparel
-cc14-denim.jpg | Denim patch jacket, front | ComplexCon | Millio's | 2026 | Apparel
-cc17-jersey-model.jpg | Cropped racing jersey | ComplexCon | Millio's | 2026 | Lookbook
-cc18-jersey-flat.jpg | Cropped racing jersey, flat | ComplexCon | Millio's | 2026 | Apparel
-cc15-lookbook1.jpg | Racetrack lookbook 01 | ComplexCon | Millio's | 2026 | Lookbook
-cc16-lookbook2.jpg | Racetrack lookbook 02 | ComplexCon | Millio's | 2026 | Lookbook
-
-Note | ComplexCon | From design to production | Each piece in the drop has its own Atelier spec sheet with measurements, a graded size chart, print placement and construction notes, so the design reaches the factory exactly as it was drawn.
-cc12-drop-flats.jpg | Drop 001 tech packs | ComplexCon | Millio's | 2026 | Spec sheet
-cc19-spec.jpg | Racetrack tee spec sheet | ComplexCon | Millio's | 2026 | Spec sheet
-
-Note | ComplexCon | Racetrack Run | To launch the drop I designed a small mobile game: dodge traffic as Millio, and a good run unlocks a 10% discount code for the collection. UI kit plus the four core screens.
-cc20-game.jpg | Racetrack Run | ComplexCon | Millio's | 2026 | Game UI
-
-Note | FIGHTING WITH ARROWS | Fighting With Arrows: Shopify store | I designed and built the whole online store for Fighting With Arrows, a project-brand rooted in a comic "rrreality" whose debut drop is a line of sterling silver RRR!RINGS. Space-moon hero, hand-drawn wordmark, product pages, the About RR story and the "Send YO!" footer.
-fwa01.jpg | Home: hero | FIGHTING WITH ARROWS | Fighting With Arrows |  | Shopify website
-fwa02.jpg | Home: wordmark and rings | FIGHTING WITH ARROWS | Fighting With Arrows |  | Shopify website
-fwa03.jpg | Home: products and footer | FIGHTING WITH ARROWS | Fighting With Arrows |  | Shopify website
-fwa08.jpg | Shop | FIGHTING WITH ARROWS | Fighting With Arrows |  | Shopify website
-fwa09.jpg | Product: The Universal Yo! | FIGHTING WITH ARROWS | Fighting With Arrows |  | Shopify website
-fwa10.jpg | Product gallery | FIGHTING WITH ARROWS | Fighting With Arrows |  | Shopify website
-fwa11.jpg | Product: yo! | FIGHTING WITH ARROWS | Fighting With Arrows |  | Shopify website
-fwa04.jpg | About RR | FIGHTING WITH ARROWS | Fighting With Arrows |  | Shopify website
-fwa05.jpg | About RR: friends and collaborators | FIGHTING WITH ARROWS | Fighting With Arrows |  | Shopify website
-fwa06.jpg | About RR: sketchbooks | FIGHTING WITH ARROWS | Fighting With Arrows |  | Shopify website
-fwa07.jpg | Footer: Send YO! | FIGHTING WITH ARROWS | Fighting With Arrows |  | Shopify website

@@ -212,8 +212,9 @@ var DRIFT_SETTINGS = {
 #drift-toggle{position:fixed;right:16px;bottom:16px;z-index:2147483001;background:#0A0A0A;color:#fff;font:600 12px/1 "Inter Tight",Helvetica,Arial,sans-serif;padding:10px 14px;border-radius:99px;border:0;cursor:pointer}
 @media (max-width:760px){
   #drift .dr-words,#drift .dr-tag{display:none}
-  #drift .dr-about{width:70vw}
-  #drift.dr-about-on .dr-about{transform:none}
+  #drift .dr-about{width:calc(100vw - 2 * var(--gut, 16px) - 44px);opacity:0;pointer-events:none;overflow:auto;max-height:calc(100% - 76px - 3vh - var(--hl,3) * .873 * clamp(42px,7.6vw,132px) * var(--hs,1) - 48px)}
+  #drift.dr-about-on .dr-about{transform:none;opacity:1;pointer-events:auto}
+  #drift.dr-about-on .dr-stamp{opacity:0}
   #drift .dr-panel{width:100vw;grid-template-columns:22px minmax(0,1fr);grid-template-rows:auto auto minmax(0,1fr);column-gap:8px;transform:translateX(calc(100% - 44px))}
   #drift .dr-peek{width:44px}
   #drift .dr-close{grid-row:1/span 3}
