@@ -118,6 +118,11 @@ var DRIFT_SETTINGS = {
 #drift .dr-tag{position:absolute;top:5.5vh;left:32%;display:flex;gap:7vw;opacity:.22;font-size:clamp(18px,2.2vw,34px);font-weight:600;letter-spacing:-.03em;line-height:1;white-space:pre-line}
 #drift .dr-field{position:absolute;inset:0;z-index:2}
 #drift .dr-item{position:absolute;left:0;top:0;will-change:transform;backface-visibility:hidden;overflow:hidden}
+#drift .dr-item{cursor:pointer}
+#drift .dr-item img{transition:opacity .2s}
+#drift .dr-item:hover img{opacity:.82}
+#drift .dr-card.dr-flash .dr-frame{animation:drflash 1.6s ease-out}
+@keyframes drflash{0%,40%{box-shadow:0 0 0 4px #0A0A0A}100%{box-shadow:0 0 0 0 rgba(10,10,10,0)}}
 #drift .dr-tile{position:absolute;inset:0;overflow:hidden;background:#EEE}
 #drift .dr-tile img{width:100%;height:100%;object-fit:cover;display:block}
 #drift .dr-count{position:absolute;top:8px;right:8px;background:rgba(40,40,40,.72);color:#fff;font-size:11px;font-weight:600;padding:3px 7px;border-radius:99px;font-variant-numeric:tabular-nums;line-height:1.2}
@@ -508,6 +513,7 @@ var DRIFT_SETTINGS = {
         if (w > W * 0.4) { w = Math.round(W * 0.4); h = Math.round(w * r); }
         var el = document.createElement('div'); el.className = 'dr-item';
         el.style.width = w + 'px'; el.style.height = h + 'px'; el.innerHTML = tileHTML(p);
+        el.dataset.pi = projects.indexOf(p); el.setAttribute('role', 'button'); el.setAttribute('aria-label', 'See ' + p.title + ' in Work');
         field.appendChild(el); cycle(el, p);
         var col = i % 5, row = Math.floor(i / 5);
         items.push({ el: el, w: w, h: h,
@@ -657,7 +663,7 @@ var DRIFT_SETTINGS = {
       projects.forEach(function (p) {
         notes.forEach(function (n) { if (n.before === p) noteCard(n); });
         if (current !== 'All' && p.category !== current) return;
-        var card = document.createElement('div'); card.className = 'dr-card';
+        var card = document.createElement('div'); card.className = 'dr-card'; card.dataset.pi = projects.indexOf(p);
         card.innerHTML = '<div class="dr-frame">' + tileHTML(p) + '</div><div class="dr-cap"><span>' + esc(p.title) +
           '<small>' + esc([p.client, p.year].filter(Boolean).join(' · ')) + '</small></span><span>' + esc(p.formats) + '</span></div>';
         var fr = card.querySelector('.dr-frame');
@@ -669,9 +675,22 @@ var DRIFT_SETTINGS = {
       notes.forEach(function (n) { if (!n.before) noteCard(n); });
     }
     renderFilters(); renderGrid();
-    root.querySelector('.dr-peek').addEventListener('click', function () { root.classList.add('dr-open'); });
-    root.querySelector('.dr-openwork').addEventListener('click', function () { root.classList.add('dr-open'); });
+    root.querySelector('.dr-peek').addEventListener('click', function () { if (current !== 'All') { current = 'All'; renderFilters(); renderGrid(); } root.classList.add('dr-open'); });
+    root.querySelector('.dr-openwork').addEventListener('click', function () { if (current !== 'All') { current = 'All'; renderFilters(); renderGrid(); } root.classList.add('dr-open'); });
     root.querySelector('.dr-close').addEventListener('click', function () { root.classList.remove('dr-open'); });
+    /* clicking a floating image opens Work on that project's group and scrolls to it */
+    on(field, 'click', function (e) {
+      var it = e.target.closest('.dr-item'); if (!it || isOpen()) return;
+      var p = projects[+it.dataset.pi]; if (!p) return;
+      current = p.category; renderFilters(); renderGrid();
+      root.classList.add('dr-open');
+      var gw = root.querySelector('.dr-gridwrap'), card = grid.querySelector('.dr-card[data-pi="' + it.dataset.pi + '"]');
+      if (gw) gw.scrollTop = 0;
+      if (card && gw) setTimeout(function () {
+        gw.scrollTo({ top: Math.max(0, card.getBoundingClientRect().top - gw.getBoundingClientRect().top + gw.scrollTop - 16), behavior: 'smooth' });
+        card.classList.remove('dr-flash'); void card.offsetWidth; card.classList.add('dr-flash');
+      }, 650);
+    });
     var moreBtn = root.querySelector('.dr-more');
     /* the collage drifts left whenever the About text or the mail form is open */
     function syncClear() { t.cl = (root.classList.contains('dr-about-on') || root.classList.contains('dr-formon')) ? 1 : 0; }
